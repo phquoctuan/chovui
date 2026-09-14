@@ -1,0 +1,9 @@
+{
+  "Validation": {
+    "titleRequired": "Please enter a title",
+    "titleMin": "Title must be at least {count} characters",
+    "titleMax": "Title must be at most {count} characters",
+    "priceRequired": "Please enter a price",
+    "descriptionMin": "Description must be at least {count} characters"
+  }
+}

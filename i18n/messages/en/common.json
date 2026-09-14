@@ -1,0 +1,9 @@
+{
+  "Common": {
+    "home": "Home",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "search": "Search",
+    "searchPlaceholder": "What are you looking for?"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Validation": {
+    "titleRequired": "Vui lòng nhập tiêu đề",
+    "titleMin": "Tiêu đề phải có ít nhất {count} ký tự",
+    "titleMax": "Tiêu đề tối đa {count} ký tự",
+    "priceRequired": "Vui lòng nhập giá",
+    "descriptionMin": "Mô tả phải có ít nhất {count} ký tự"
+  }
+}

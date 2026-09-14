@@ -1,0 +1,8 @@
+{
+  "ListingForm": {
+    "title": "Title",
+    "price": "Price",
+    "description": "Description",
+    "submit": "Post listing"
+  }
+}

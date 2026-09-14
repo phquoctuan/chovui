@@ -1,0 +1,16 @@
+{
+  "Metadata": {
+    "title": "Cho vui",
+    "description": "Buying, selling, and posting classified ads"
+  },
+  "Common": {
+    "home": "Home",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "search": "Search",
+    "searchPlaceholder": "What are you looking for?"
+  },
+  "HomePage": {
+    "title": "Hello world!"
+  }
+}

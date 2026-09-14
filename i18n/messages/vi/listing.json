@@ -1,0 +1,8 @@
+{
+  "ListingForm": {
+    "title": "Tiêu đề",
+    "price": "Giá",
+    "description": "Mô tả",
+    "submit": "Đăng tin"
+  }
+}
