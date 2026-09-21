@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Check
+pnpm exec tsc --noEmit
+    ## Check drizzle
+    pnpm exec drizzle-kit check
+    pnpm exec drizzle-kit generate --name=init_listings
+    pnpm exec drizzle-kit migrate
+        pnpm exec drizzle-kit push //= generate + migrate
+    pnpm exec drizzle-kit generate --name=add_better_auth
+## Better Auth
+pnpm dlx auth@latest generate --adapter drizzle --dialect postgresql --output db/schema/auth.ts

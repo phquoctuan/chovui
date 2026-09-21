@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
-import {NextIntlClientProvider} from 'next-intl';
+import { IntlProvider } from "@/components/intl-provider";
+import Providers from "@/components/providers";
 import {routing} from '@/i18n/routing';
 // import {useTranslations} from 'next-intl';
 import {getTranslations} from 'next-intl/server';
@@ -58,12 +59,14 @@ export default async function LocaleLayout({
   return (
     <html lang="vi" suppressHydrationWarning className={cn( "h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, geistHeading.variable)}>
       <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider messages={messages}>
-          <Header /> 
-          <main className="min-h-screen">
-            {children}
-          </main>
-        </NextIntlClientProvider>
+        <IntlProvider>
+          <Providers>
+            <Header /> 
+            <main className="min-h-screen">
+              {children}
+            </main>
+          </Providers>
+        </IntlProvider>
       </body>
     </html>
   );

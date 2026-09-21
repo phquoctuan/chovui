@@ -1,17 +1,35 @@
 "use client";
 
-import { NextIntlClientProvider } from "next-intl";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { useEffect } from "react";
+// import { toast } from "sonner";
+import { getQueryClient } from "@/data/query-client";
+// import { authClient } from "@/lib/auth-client";
+import { ThemeProvider } from "./theme-provider";
+// import {IntlProvider} from './next-intl-providers';
+import { Toaster } from "./ui/sonner";
 
-export function Providers({
-  children,
-  messages,
-}: {
-  children: React.ReactNode;
-  messages: IntlMessages;
-}) {
-  return (
-    <NextIntlClientProvider messages={messages}>
-      {children}
-    </NextIntlClientProvider>
-  );
-}
+type Props = {
+	children: React.ReactNode;
+};
+
+const Providers = ({ children }: Props) => {
+	const queryClient = getQueryClient();
+	return (
+		// <ThemeProvider attribute="class" defaultTheme="white">
+				<QueryClientProvider client={queryClient}>
+					<ReactQueryDevtools
+						client={queryClient}
+						initialIsOpen={false}
+						buttonPosition="bottom-right"
+						position="bottom"
+					/>
+					<Toaster richColors closeButton />
+					{children}
+				</QueryClientProvider>
+		// </ThemeProvider>
+	);
+};
+
+export default Providers;

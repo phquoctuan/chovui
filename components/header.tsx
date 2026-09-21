@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LocaleSwitcher } from "./locale-switcher";
 import { SearchForm } from "@/components/forms/search-form";
+import { UserMenu } from "@/components/auth/user-menu";
 
 export function Header() {
   const t = useTranslations("Common");
@@ -33,7 +34,7 @@ export function Header() {
           <Link href="/sign-up">
             {t("signUp")}
           </Link>
-
+          <UserMenu />
           <LocaleSwitcher />
         </nav>
       </div>

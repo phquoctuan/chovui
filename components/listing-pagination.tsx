@@ -27,21 +27,24 @@ import {PAGE_SIZE_OPTIONS, DEFAULT_PAGE_SIZE} from "@/components/const";
 
 
 type ListingPaginationProps = {
+  currentPage: number;
+  pageSize: number;
   totalPages: number;
 };
 
 export function ListingPagination({
+  currentPage,
+  pageSize,
   totalPages,
 }: ListingPaginationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentPage = Number(searchParams.get("page") ?? "1");
-
-  const pageSize = Number(
-    searchParams.get("pageSize") ?? DEFAULT_PAGE_SIZE,
-  );
+  // const currentPage = Number(searchParams.get("page") ?? "1");
+  // const pageSize = Number(
+  //   searchParams.get("pageSize") ?? DEFAULT_PAGE_SIZE,
+  // );
 
   function updatePagination(
     page: number,
