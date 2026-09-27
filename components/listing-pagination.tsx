@@ -3,6 +3,7 @@
 import {
   Pagination,
   PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -23,14 +24,43 @@ import {
 } from "@/i18n/navigation";
 
 import { useSearchParams } from "next/navigation";
-import {PAGE_SIZE_OPTIONS, DEFAULT_PAGE_SIZE} from "@/components/const";
-
+import { PAGE_SIZE_OPTIONS } from "@/components/const";
 
 type ListingPaginationProps = {
   currentPage: number;
   pageSize: number;
   totalPages: number;
 };
+
+// Hàm helper tính toán các trang hiển thị kèm dấu ...
+function generatePaginationRange(currentPage: number, totalPages: number) {
+  const delta = 2; // Số trang hiển thị trước và sau trang hiện tại
+  const range: number[] = [];
+  const rangeWithDots: (number | string)[] = [];
+  let l: number | undefined;
+
+  range.push(1);
+  for (let i = currentPage - delta; i <= currentPage + delta; i++) {
+    if (i < totalPages && i > 1) {
+      range.push(i);
+    }
+  }
+  if(totalPages > 1) range.push(totalPages);
+  // console.log("range:", range)
+  for (let i of range) {
+    if (l) {
+      if (i - l === 2) {
+        rangeWithDots.push(l + 1);
+      } else if (i - l !== 1) {
+        rangeWithDots.push("...");
+      }
+    }
+    rangeWithDots.push(i);
+    l = i;
+  }
+  // console.log("rangeWithDots:", rangeWithDots)
+  return rangeWithDots;
+}
 
 export function ListingPagination({
   currentPage,
@@ -41,16 +71,11 @@ export function ListingPagination({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // const currentPage = Number(searchParams.get("page") ?? "1");
-  // const pageSize = Number(
-  //   searchParams.get("pageSize") ?? DEFAULT_PAGE_SIZE,
-  // );
-
   function updatePagination(
     page: number,
     newPageSize?: number,
   ) {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
 
     params.set("page", String(page));
 
@@ -60,6 +85,11 @@ export function ListingPagination({
 
     router.replace(`${pathname}?${params.toString()}`);
   }
+
+  // Nếu chỉ có 1 trang hoặc không có trang nào, có thể ẩn phân trang hoặc giữ nguyên tuỳ bạn
+  // if (totalPages <= 1) return null;
+
+  const paginationRange = generatePaginationRange(currentPage, totalPages);
 
   return (
     <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -99,37 +129,52 @@ export function ListingPagination({
       {/* Pagination */}
       <Pagination>
         <PaginationContent>
+          {/* Nút Previous */}
           <PaginationItem>
             <PaginationPrevious
               href="#"
               onClick={(event) => {
                 event.preventDefault();
-
                 if (currentPage > 1) {
                   updatePagination(currentPage - 1);
                 }
               }}
+              aria-disabled={currentPage <= 1}
+              className={currentPage <= 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
             />
           </PaginationItem>
 
-          {Array.from(
-            { length: totalPages  },
-            (_, index) => index + 1,
-          ).map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                href="#"
-                isActive={page === currentPage}
-                onClick={(event) => {
-                  event.preventDefault();
-                  updatePagination(page);
-                }}
-              >
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
+          {/* Danh sách trang thông minh có ... */}
+          {paginationRange.map((pageNumber, index) => {
+            if (pageNumber === "...") {
+              return (
+                <PaginationItem key={`ellipsis-${index}`}>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              );
+            }
 
+            const page = Number(pageNumber);
+            const isActive = page === currentPage;
+
+            return (
+              <PaginationItem key={index}>
+                <PaginationLink
+                  href="#"
+                  isActive={isActive}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    updatePagination(page);
+                  }}
+                  className="cursor-pointer"
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            );
+          })}
+
+          {/* Nút Next */}
           <PaginationItem>
             <PaginationNext
               href="#"
@@ -139,6 +184,8 @@ export function ListingPagination({
                   updatePagination(currentPage + 1);
                 }
               }}
+              aria-disabled={currentPage >= totalPages}
+              className={currentPage >= totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
             />
           </PaginationItem>
         </PaginationContent>

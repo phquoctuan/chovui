@@ -1,9 +1,15 @@
 import { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 import {
   type ListingQuery,
 } from "@/data/listings";
 import { listingQuerySchema } from "@/lib/validations/listing-schema";
 import { ListingService } from "@/lib/services/listing-service";
+import { requireSession } from "@/lib/auth-session";
+import { handleApiError } from "@/lib/errors/handle-api-error";
+import { listingCreateSchema } from "@/lib/validations/listing-create-schema";
+//// Server API layer
 // API Route
 //    ↓ await
 // ListingService
@@ -56,3 +62,41 @@ export async function GET(request: NextRequest) {
   });
 }
 
+export async function POST(request: Request) {
+  try {
+    const session = await requireSession();
+
+    const body = await request.json();
+
+    const validationResult =
+      listingCreateSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          error: {
+            code: "INVALID_BODY",
+            message: "Dữ liệu không hợp lệ",
+            details: z.treeifyError(validationResult.error),
+          },
+        },
+        { status: 400 },
+      );
+    }
+
+    const listing =
+      await ListingService.createListing(
+        session.user.id,
+        validationResult.data,
+      );
+
+    return NextResponse.json(
+      {
+        data: listing,
+      },
+      { status: 201 },
+    );
+  } catch (error) {
+    return handleApiError(error);
+  }
+}

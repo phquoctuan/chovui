@@ -1,9 +1,24 @@
 "use client";
-
+// Form
+//  ├─ Zod validation
+//  ├─ React Hook Form
+//  ├─ loading state
+//  ├─ success/error toast
+//  └─ reset sau khi tạo
+//         ↓
+// POST /api/listings
+//         ↓
+// Better Auth session
+//         ↓
+// Service
+//         ↓
+// Repository
+//         ↓
+// PostgreSQL
+import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,38 +36,47 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-const createListingSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Tiêu đề phải có ít nhất 5 ký tự")
-    .max(100, "Tiêu đề tối đa 100 ký tự"),
+import {
+  listingCreateSchema,
+  type ListingCreateInput,
+} from "@/lib/validations/listing-create-schema";
 
-  price: z
-    .string()
-    .min(1, "Vui lòng nhập giá"),
-
-  description: z
-    .string()
-    .min(20, "Mô tả phải có ít nhất 20 ký tự"),
-});
-
-type CreateListingFormData =
-  z.infer<typeof createListingSchema>;
+import { createListing } from "@/lib/api/listings";
 
 export function CreateListingForm() {
-  const form = useForm<CreateListingFormData>({
-    resolver: zodResolver(createListingSchema),
+  const queryClient = useQueryClient();
+  const form = useForm<ListingCreateInput>({
+    resolver: zodResolver(listingCreateSchema),
 
     defaultValues: {
       title: "",
-      price: "",
       description: "",
+      price: 0,
+      country: "VN",
+      category: "",
+      location: "",
     },
   });
 
-  function onSubmit(data: CreateListingFormData) {
-    console.log(data);
+async function onSubmit(data: ListingCreateInput) {
+  try {
+    const listing = await createListing(data);
+
+    // console.log("Created listing:", listing);
+
+    form.reset();
+    await queryClient.invalidateQueries({queryKey: ["my-listings"],});
+    toast.success("Đăng tin thành công");
+
+  } catch (error) {
+    console.error("Create listing failed:", error);
+    toast.error(
+      error instanceof Error
+        ? error.message
+        : "Đăng tin thất bại",
+    );
   }
+}
 
   return (
     <Card>
@@ -66,6 +90,7 @@ export function CreateListingForm() {
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FieldGroup>
+            {/* Title */}
             <Field>
               <FieldLabel htmlFor="title">
                 Tiêu đề
@@ -84,6 +109,7 @@ export function CreateListingForm() {
               )}
             </Field>
 
+            {/* Price */}
             <Field>
               <FieldLabel htmlFor="price">
                 Giá
@@ -91,8 +117,12 @@ export function CreateListingForm() {
 
               <Input
                 id="price"
-                placeholder="Ví dụ: 15000000"
-                {...form.register("price")}
+                type="number"
+                min={0}
+                placeholder="Ví dụ: 15000"
+                {...form.register("price", {
+                  valueAsNumber: true,
+                })}
               />
 
               {form.formState.errors.price && (
@@ -102,6 +132,65 @@ export function CreateListingForm() {
               )}
             </Field>
 
+            {/* Country */}
+            <Field>
+              <FieldLabel htmlFor="country">
+                Quốc gia
+              </FieldLabel>
+
+              <Input
+                id="country"
+                placeholder="VN"
+                maxLength={2}
+                {...form.register("country")}
+              />
+
+              {form.formState.errors.country && (
+                <FieldError>
+                  {form.formState.errors.country.message}
+                </FieldError>
+              )}
+            </Field>
+
+            {/* Category */}
+            <Field>
+              <FieldLabel htmlFor="category">
+                Danh mục
+              </FieldLabel>
+
+              <Input
+                id="category"
+                placeholder="Ví dụ: Điện thoại"
+                {...form.register("category")}
+              />
+
+              {form.formState.errors.category && (
+                <FieldError>
+                  {form.formState.errors.category.message}
+                </FieldError>
+              )}
+            </Field>
+
+            {/* Location */}
+            <Field>
+              <FieldLabel htmlFor="location">
+                Địa điểm
+              </FieldLabel>
+
+              <Input
+                id="location"
+                placeholder="Ví dụ: Ho Chi Minh"
+                {...form.register("location")}
+              />
+
+              {form.formState.errors.location && (
+                <FieldError>
+                  {form.formState.errors.location.message}
+                </FieldError>
+              )}
+            </Field>
+
+            {/* Description */}
             <Field>
               <FieldLabel htmlFor="description">
                 Mô tả
@@ -127,8 +216,11 @@ export function CreateListingForm() {
         <Button
           type="submit"
           form="create-listing-form"
+          disabled={form.formState.isSubmitting}
         >
-          Đăng tin
+          {form.formState.isSubmitting
+            ? "Đang đăng..."
+            : "Đăng tin"}
         </Button>
       </CardFooter>
     </Card>

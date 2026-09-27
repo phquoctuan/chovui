@@ -1,8 +1,11 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "@better-auth/drizzle-adapter";
-import { username } from "better-auth/plugins";
+import {
+  admin,
+  username,
+} from "better-auth/plugins";
 
-import { db } from "@/db";
+import { db } from "../db";
 import * as schema from "@/db/schema";
 
 export const auth = betterAuth({
@@ -17,6 +20,10 @@ export const auth = betterAuth({
 
   plugins: [
     username(),
+    admin({
+      defaultRole: "user",
+      adminRoles: ["admin"],
+    }),
   ],
 });
 //pnpm exec auth generate --adapter drizzle --dialect postgresql --output db/schema/auth.ts

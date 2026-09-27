@@ -45,3 +45,16 @@ pnpm exec tsc --noEmit
     pnpm exec drizzle-kit generate --name=add_better_auth
 ## Better Auth
 pnpm dlx auth@latest generate --adapter drizzle --dialect postgresql --output db/schema/auth.ts
+pnpm dlx @better-auth/cli generate --output ./db/schema/auth.ts //add new plugin -- regenerate
+pnpm exec drizzle-kit generate
+pnpm exec drizzle-kit migrate
+=> pnpm dlx @better-auth/cli create-admin (or auth.api.createUser()) or pnpm dlx auth@latest create-admin  --email "admin@chovui.com"  --name "Chovui Admin"  --password "adminpass@"  --role admin
+
+## Github
+git status
+git add .
+git commit -m "Mô tả ngắn gọn về thay đổi của bạn"
+git push origin main
+
+## Seed data
+pnpm exec tsx scripts/seed-listings.ts 

@@ -15,6 +15,27 @@
       "when": 1789744890066,
       "tag": "0001_add_better_auth",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790002442359,
+      "tag": "0002_flat_makkari",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790002672662,
+      "tag": "0003_eager_puppet_master",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790078701864,
+      "tag": "0004_kind_storm",
+      "breakpoints": true
     }
   ]
 }

@@ -72,13 +72,13 @@ export function ListingSearchResults({
         </div>
       )}
 
-      {data.pagination.totalPages > 1 && (
+      {/* {data.pagination.totalPages > 1 && ( */}
         <ListingPagination
           currentPage={data.pagination.currentPage}
           pageSize={data.pagination.pageSize}
           totalPages={data.pagination.totalPages}
         />
-      )}
+      {/* )} */}
     </>
   );
 }
