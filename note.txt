@@ -1,0 +1,4 @@
+mình chốt:
+vẫn giữ: /api/account/profile/route.ts.
+app/api/user/profile/route.ts chỉ dùng cho table user của betterAuth
+vẫn tạo lib/api/account.ts dùng cho account(thông tin account bao gồm user và nhiều thông tin khác như: address, phone)

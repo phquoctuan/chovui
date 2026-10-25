@@ -1,44 +1,21 @@
-import {
-  and,
-  asc,
-  count,
-  eq,
-  gte,
-  ilike,
-  lte,
-} from "drizzle-orm";
+import { and, asc, count, eq, gte, ilike, lte } from "drizzle-orm";
 import type { InferSelectModel } from "drizzle-orm";
-
+import Decimal from "decimal.js";
 import { db } from "@/db";
-import { listings } from "@/db/schema";
-
-import type {
-  ListingQuery,
-  ListingResult,
-} from "@/data/listings";
-
-import type {ListingCreateInput,} from "@/lib/validations/listing-create-schema";
-import type { ListingUpdateInput } from "@/lib/validations/listing-update-schema";
-
-export type Listing = InferSelectModel<typeof listings>; //sau này nên tách ra thành file riêng
-// export type Listing = typeof listings.$inferSelect;
+import { listings } from "@/db/schema/listings";
+import type { Listing } from "@/db/schema";
+import type { ListingQuery, ListingResult } from "@/data/listings";
+import type { ListingCreateInput } from "@/lib/validations/listing/listing-create-schema.js";
+import type { ListingUpdateInput } from "@/lib/validations/listing/listing-update-schema.js";
 
 export interface IListingRepository {
   findMany(query: ListingQuery): Promise<ListingResult>;
 
-  findManyByUserId(
-    userId: string,
-  ): Promise<Listing[]>;
+  findManyByUserId(userId: string): Promise<Listing[]>;
 
-  create(
-    userId: string,
-    data: ListingCreateInput,
-  ): Promise<Listing>;
+  create(userId: string, data: ListingCreateInput): Promise<Listing>;
 
-  findByIdForUser(
-    listingId: string,
-    userId: string,
-  ): Promise<Listing | null>;
+  findByIdForUser(listingId: string, userId: string): Promise<Listing | null>;
 
   updateByIdForUser(
     listingId: string,
@@ -46,14 +23,13 @@ export interface IListingRepository {
     data: ListingUpdateInput,
   ): Promise<Listing | null>;
 
+  deleteByIdForUser(listingId: string, userId: string): Promise<Listing | null>;
+
+  findById(listingId: string): Promise<Listing | null>;
 }
 
-export class ListingRepository
-  implements IListingRepository
-{
-  async findMany(
-    query: ListingQuery,
-  ): Promise<ListingResult> {
+export class ListingRepository implements IListingRepository {
+  async findMany(query: ListingQuery): Promise<ListingResult> {
     const page = Number(query.page ?? 1);
     const pageSize = Number(query.pageSize ?? 20);
 
@@ -62,64 +38,38 @@ export class ListingRepository
     const conditions = [];
 
     if (query.q) {
-      conditions.push(
-        ilike(listings.title, `%${query.q}%`),
-      );
+      conditions.push(ilike(listings.title, `%${query.q}%`));
     }
 
     if (query.country) {
-      conditions.push(
-        eq(listings.country, query.country),
-      );
+      conditions.push(eq(listings.countryId, query.country));
     }
 
     if (query.category) {
-      conditions.push(
-        eq(listings.category, query.category),
-      );
+      conditions.push(eq(listings.categoryId, query.category));
     }
 
     if (query.location) {
-      conditions.push(
-        ilike(
-          listings.location,
-          `%${query.location}%`,
-        ),
-      );
+      conditions.push(ilike(listings.location, `%${query.location}%`));
     }
 
     if (query.minPrice) {
-      conditions.push(
-        gte(
-          listings.price,
-          Number(query.minPrice),
-        ),
-      );
+      conditions.push(gte(listings.price, query.minPrice));
     }
 
     if (query.maxPrice) {
-      conditions.push(
-        lte(
-          listings.price,
-          Number(query.maxPrice),
-        ),
-      );
+      conditions.push(lte(listings.price, query.maxPrice));
     }
 
     const whereCondition =
-      conditions.length > 0
-        ? and(...conditions)
-        : undefined;
+      conditions.length > 0 ? and(...conditions) : undefined;
 
     const [rows, totalResult] = await Promise.all([
       db
         .select()
         .from(listings)
         .where(whereCondition)
-        .orderBy(
-          asc(listings.createdAt),
-          asc(listings.id),
-        )
+        .orderBy(asc(listings.createdAt), asc(listings.id))
         .limit(pageSize)
         .offset(offset),
 
@@ -131,67 +81,53 @@ export class ListingRepository
         .where(whereCondition),
     ]);
 
-    const totalItems = Number(
-      totalResult[0]?.count ?? 0,
-    );
+    const totalItems = Number(totalResult[0]?.count ?? 0);
 
     return {
       listings: rows,
       currentPage: page,
       pageSize,
       totalItems,
-      totalPages: Math.ceil(
-        totalItems / pageSize,
-      ),
+      totalPages: Math.ceil(totalItems / pageSize),
     };
   }
 
-  async findManyByUserId(
-    userId: string,
-  ): Promise<Listing[]> {
+  async findManyByUserId(userId: string): Promise<Listing[]> {
     return db
       .select()
       .from(listings)
       .where(eq(listings.userId, userId))
-      .orderBy(
-        asc(listings.createdAt),
-        asc(listings.id),
-      );
+      .orderBy(asc(listings.createdAt), asc(listings.id));
   }
 
-  async create(
-    userId: string,
-    data: ListingCreateInput,
-    ): Promise<Listing> {
-      const [listing] = await db
-        .insert(listings)
-        .values({
-          userId,
-          title: data.title,
-          description: data.description ?? null,
-          price: data.price,
-          country: data.country,
-          category: data.category,
-          location: data.location,
-        })
-        .returning();
+  async create(userId: string, data: ListingCreateInput): Promise<Listing> {
+    const [listing] = await db
+      .insert(listings)
+      .values({
+        userId,
+        title: data.title,
+        categoryId: Number(data.category),
+        price: String(data.price),
+        currencyCode: "đ",
+        countryId: 1,
+        region: "aa",
+        slug:"3535353535353",
+        description: data.description ?? null,
+        location: data.location,
+      })
+      .returning();
 
-      return listing;
+    return listing;
   }
 
   async findByIdForUser(
     listingId: string,
     userId: string,
-    ): Promise<Listing | null> {
+  ): Promise<Listing | null> {
     const [listing] = await db
       .select()
       .from(listings)
-      .where(
-        and(
-          eq(listings.id, listingId),
-          eq(listings.userId, userId),
-        ),
-      );
+      .where(and(eq(listings.id, listingId), eq(listings.userId, userId)));
 
     return listing ?? null;
   }
@@ -206,21 +142,36 @@ export class ListingRepository
       .set({
         title: data.title,
         description: data.description ?? null,
-        price: data.price,
-        country: data.country,
-        category: data.category,
+        price: data.price.toString(),
+        countryId: Number(data.country),
+        categoryId: Number(data.category),
         location: data.location,
         updatedAt: new Date(),
       })
-      .where(
-        and(
-          eq(listings.id, listingId),
-          eq(listings.userId, userId),
-        ),
-      )
+      .where(and(eq(listings.id, listingId), eq(listings.userId, userId)))
       .returning();
 
     return listing ?? null;
   }
-}
 
+  async deleteByIdForUser(
+    listingId: string,
+    userId: string,
+  ): Promise<Listing | null> {
+    const [listing] = await db
+      .delete(listings)
+      .where(and(eq(listings.id, listingId), eq(listings.userId, userId)))
+      .returning();
+
+    return listing ?? null;
+  }
+
+  async findById(listingId: string): Promise<Listing | null> {
+    const [listing] = await db
+      .select()
+      .from(listings)
+      .where(eq(listings.id, listingId));
+
+    return listing ?? null;
+  }
+}

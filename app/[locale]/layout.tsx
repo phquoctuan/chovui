@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
-import { IntlProvider } from "@/components/intl-provider";
-import Providers from "@/components/providers";
+import { IntlProvider } from "@/components/providers/intl-provider";
+import Providers from "@/components/providers/providers";
 import {routing} from '@/i18n/routing';
 // import {useTranslations} from 'next-intl';
 import {getTranslations} from 'next-intl/server';
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/header";
+import Link from "next/link";
 
 const geistHeading = Geist({
   subsets: ["latin"],
@@ -57,14 +57,14 @@ export default async function LocaleLayout({
   // ✅ Uses the locale from `i18n/request.ts`
   const messages = await getMessages();
   return (
-    <html lang="vi" suppressHydrationWarning className={cn( "h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, geistHeading.variable)}>
-      <body className="min-h-full flex flex-col">
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+				<link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+			</head>
+      <body className={cn( "h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, geistHeading.variable)}>
         <IntlProvider>
           <Providers>
-            <Header /> 
-            <main className="min-h-screen">
-              {children}
-            </main>
+            {children}
           </Providers>
         </IntlProvider>
       </body>

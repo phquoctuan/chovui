@@ -9,7 +9,7 @@ export default function AuthTestPage() {
         name: "Test User",
         email: "test@example.com",
         username: "testuser",
-        password: "testpassword123",
+        password: "Tuan@2020",
       });
 
     console.log("SIGN UP DATA:", data);

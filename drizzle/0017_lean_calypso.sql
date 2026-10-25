@@ -1,0 +1,1 @@
+ALTER TABLE "categories" RENAME COLUMN "order" TO "sort_order";

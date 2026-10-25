@@ -55,8 +55,9 @@
   --card-foreground: oklch(0.145 0.008 326);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0.008 326);
-  --primary: oklch(0.518 0.253 323.949);
-  --primary-foreground: oklch(0.977 0.017 320.058);
+  /* --primary: oklch(0.518 0.253 323.949); */
+  --primary: oklch(0.828 0.189 84.429);
+  --primary-foreground: oklch(27.274% 0.00003 271.152);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.96 0.003 325.6);
@@ -75,7 +76,7 @@
   --radius: 0.45rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0.008 326);
-  --sidebar-primary: oklch(0.591 0.293 322.896);
+  --sidebar-primary: oklch(83.275% 0.17151 82.058 / 0.863);;
   --sidebar-primary-foreground: oklch(0.977 0.017 320.058);
   --sidebar-accent: oklch(0.96 0.003 325.6);
   --sidebar-accent-foreground: oklch(0.212 0.019 322.12);
@@ -127,4 +128,22 @@
   html {
     @apply font-sans;
   }
+}
+@utility container {
+  @apply max-w-screen-xl mx-auto p-5;
+}
+
+/* Tùy chỉnh thanh cuộn siêu nhỏ gọn cho popup danh mục */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
 }

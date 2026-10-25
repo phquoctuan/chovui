@@ -4,11 +4,12 @@ import { z } from "zod";
 import {
   type ListingQuery,
 } from "@/data/listings";
-import { listingQuerySchema } from "@/lib/validations/listing-schema";
+import { listingQuerySchema } from "@/lib/validations/listing/listing-schema";
 import { ListingService } from "@/lib/services/listing-service";
 import { requireSession } from "@/lib/auth-session";
 import { handleApiError } from "@/lib/errors/handle-api-error";
-import { listingCreateSchema } from "@/lib/validations/listing-create-schema";
+import { listingCreateSchema } from "@/lib/validations/listing/listing-create-schema";
+import { assertSellerCanCreateListing } from "@/lib/services/seller-readiness-service";
 //// Server API layer
 // API Route
 //    ↓ await
@@ -16,7 +17,7 @@ import { listingCreateSchema } from "@/lib/validations/listing-create-schema";
 //    ↓ await
 // ListingRepository
 //    ↓
-// Mock data
+// Database
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
@@ -62,10 +63,21 @@ export async function GET(request: NextRequest) {
   });
 }
 
+//demo by chatGPT
 export async function POST(request: Request) {
   try {
     const session = await requireSession();
-
+    // try {
+    //   await assertSellerCanCreateListing(session.user.id);
+    // } catch (error) {
+    //   if (error instanceof Error && error.message === "SELLER_PROFILE_NOT_READY") {
+    //     return NextResponse.json(
+    //       { error: error.message, readiness: (error as Error & { readiness?: unknown }).readiness },
+    //       { status: 403 },
+    //     );
+    //   }
+    //   throw error;
+    // }
     const body = await request.json();
 
     const validationResult =
@@ -85,7 +97,8 @@ export async function POST(request: Request) {
     }
 
     const listing =
-      await ListingService.createListing(
+      // await ListingService.createListing(
+      await ListingService.createListingByCategory(
         session.user.id,
         validationResult.data,
       );

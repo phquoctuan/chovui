@@ -4,60 +4,7 @@ import { db } from "../db";
 import { listings } from "../db/schema";
 
 const seedListings: Array<typeof listings.$inferInsert> = [
-  {
-    userId: "ANBTzG1qhjGYPXhdF03IBpWBY1iAv6GF",
-    title: "iPhone 15 Pro Max",
-    description: "iPhone 15 Pro Max chính hãng",
-    price: 25000000,
-    country: "VN",
-    category: "Điện thoại",
-    location: "Hồ Chí Minh",
-  },
-  {
-    userId: "ANBTzG1qhjGYPXhdF03IBpWBY1iAv6GF",
-    title: "iPhone 14 Pro",
-    description: "iPhone 14 Pro còn đẹp",
-    price: 18000000,
-    country: "VN",
-    category: "Điện thoại",
-    location: "Hà Nội",
-  },
-  {
-    userId: "ANBTzG1qhjGYPXhdF03IBpWBY1iAv6GF",
-    title: "MacBook Air M3",
-    description: "MacBook Air M3",
-    price: 27000000,
-    country: "VN",
-    category: "Laptop",
-    location: "Hồ Chí Minh",
-  },
-  {
-    userId: "ANBTzG1qhjGYPXhdF03IBpWBY1iAv6GF",
-    title: "Samsung Galaxy S25",
-    description: "Samsung Galaxy S25 mới",
-    price: 22000000,
-    country: "VN",
-    category: "Điện thoại",
-    location: "Đà Nẵng",
-  },
-  {
-    userId: "ANBTzG1qhjGYPXhdF03IBpWBY1iAv6GF",
-    title: "MacBook Pro M4",
-    description: "MacBook Pro M4",
-    price: 45000000,
-    country: "VN",
-    category: "Laptop",
-    location: "Hồ Chí Minh",
-  },
-  {
-    userId: "ANBTzG1qhjGYPXhdF03IBpWBY1iAv6GF",
-    title: "Toyota Camry",
-    description: "Toyota Camry đã qua sử dụng",
-    price: 850000000,
-    country: "VN",
-    category: "Ô tô",
-    location: "Hà Nội",
-  },
+  
 ];
 
 async function main() {

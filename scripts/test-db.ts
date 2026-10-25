@@ -11,7 +11,7 @@ async function main() {
 
   const rows = await db
     .select()
-    .from(listings);
+    .from(listings).limit(20);
 
   console.log("Listings:", rows);
 }

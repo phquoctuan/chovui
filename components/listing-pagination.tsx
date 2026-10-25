@@ -24,7 +24,7 @@ import {
 } from "@/i18n/navigation";
 
 import { useSearchParams } from "next/navigation";
-import { PAGE_SIZE_OPTIONS } from "@/components/const";
+import { PAGE_SIZE_OPTIONS } from "@/const";
 
 type ListingPaginationProps = {
   currentPage: number;

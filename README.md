@@ -58,3 +58,4 @@ git push origin main
 
 ## Seed data
 pnpm exec tsx scripts/seed-listings.ts 
+pnpm db:seed:countries

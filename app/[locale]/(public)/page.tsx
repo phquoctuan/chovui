@@ -1,36 +1,41 @@
-import { Button } from "@/components/ui/button";
-import {useTranslations} from 'next-intl';
-import { LocaleSwitcher } from "@/components/locale-switcher";
-// import {getTranslations} from 'next-intl/server';//In case of async components
+import { Header } from "@/components/common/header";
+import { CategoriesCarousel } from "@/components/common/categories-carousel";
+import { FeaturedAds } from "@/components/common/featured-ads";
+import { ListingTabs } from "@/components/common/listing-tabs";
+import { SeoIntro } from "@/components/common/seo-intro";
+import { PopularSearches } from "@/components/common/popular-searches";
+import { PromoBanner } from "@/components/common/promo-banner";
+import { Footer } from "@/components/common/footer";
 
 export default function HomePage() {
-  const t = useTranslations('HomePage');
   return (
-    <main className="p-8 space-y-6">
-      <h1>{t('title')}</h1>
-      <LocaleSwitcher />
-      <div>
-        <h1 className="text-3xl font-bold">Chovui</h1>
-        <p className="text-muted-foreground">
-          Marketplace mua bán trực tuyến
-        </p>
-      </div>
+    <div className="min-h-screen bg-slate-50/50 flex flex-col">
+      {/* Header with Categories Button, User Account Manager, Search & Navigation */}
+      <Header />
 
-      <div className="flex gap-3">
-        <Button>Đăng tin</Button>
+      {/* Categories Carousel */}
+      <CategoriesCarousel />
 
-        <Button variant="secondary">
-          Xem tin đăng
-        </Button>
+      {/* Main Content Area */}
+      <main className="flex-1 container mx-auto px-4 py-4">
+        {/* Tin được trả phí cao */}
+        <FeaturedAds />
 
-        <Button variant="outline">
-          Tìm kiếm
-        </Button>
+        {/* Tab Tin hot [Dành cho bạn], [Mới nhất]... */}
+        <ListingTabs />
 
-        <Button variant="destructive">
-          Xóa
-        </Button>
-      </div>
-    </main>
+        {/* Promotional Banner */}
+        <PromoBanner />
+
+        {/* Giới thiệu [Chợ Tốt] */}
+        <SeoIntro />
+
+        {/* Danh mục tìm kiếm nổi bật */}
+        <PopularSearches />
+      </main>
+
+      {/* Footer [Hỗ trợ khách hàng, Về Chợ Tốt, Liên kết] */}
+      <Footer />
+    </div>
   );
 }

@@ -64,6 +64,7 @@ export function ListingSearchResults({
           {data.data.map((listing) => (
             <ListingCard
               key={listing.id}
+              id={listing.id}
               title={listing.title}
               price={listing.price}
               location={listing.location}

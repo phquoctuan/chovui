@@ -1,25 +1,41 @@
 "use client";
 
-import { useEffect, useState} from "react";
+import { useEffect } from "react";
 import { toast } from "sonner";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { getListing } from "@/lib/api/listings";
+import { Button } from "@/components/ui/button";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { getListing, updateListing } from "@/lib/api/listings";
 import {
   listingUpdateSchema,
   type ListingUpdateInput,
-} from "@/lib/validations/listing-update-schema";
-import { updateListing } from "@/lib/api/listings";
+} from "@/lib/validations/listing/listing-update-schema";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+
+import { ListingImageUploadEdit } from "@/components/listings/image_manage/listing-image-upload-edit";
 
 type EditListingFormProps = {
   listingId: string;
 };
 
-export function EditListingForm({
-  listingId,
-}: EditListingFormProps) {
+export function EditListingForm({ listingId }: EditListingFormProps) {
+  const queryClient = useQueryClient();
+
   const {
     data: listing,
     isPending,
@@ -29,8 +45,6 @@ export function EditListingForm({
     queryKey: ["listing", listingId],
     queryFn: () => getListing(listingId),
   });
-
-  const queryClient = useQueryClient();
 
   const form = useForm<ListingUpdateInput>({
     resolver: zodResolver(listingUpdateSchema),
@@ -44,32 +58,29 @@ export function EditListingForm({
     },
   });
 
-  useEffect(() => {
-    if (!listing) {
-      return;
-    }
+  const { isSubmitting } = form.formState;
 
-    form.reset({
-      title: listing.title,
-      description: listing.description ?? "",
-      price: listing.price,
-      country: listing.country,
-      category: listing.category,
-      location: listing.location,
-    });
+  useEffect(() => {
+    if (listing) {
+      form.reset({
+        title: listing.title,
+        description: listing.description ?? "",
+        price: listing.price,
+        country: listing.country,
+        category: listing.category,
+        location: listing.location,
+      });
+    }
   }, [listing, form]);
 
   async function onSubmit(data: ListingUpdateInput) {
     try {
       await updateListing(listingId, data);
 
-      await queryClient.invalidateQueries({
-        queryKey: ["listing", listingId],
-      });
-
-      await queryClient.invalidateQueries({
-        queryKey: ["my-listings"],
-      });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["listing", listingId] }),
+        queryClient.invalidateQueries({ queryKey: ["my-listings"] }),
+      ]);
 
       toast.success("Cập nhật tin đăng thành công");
     } catch (error) {
@@ -85,7 +96,7 @@ export function EditListingForm({
 
   if (isPending) {
     return (
-      <div className="py-8 text-center">
+      <div className="py-8 text-center text-muted-foreground">
         Đang tải tin đăng...
       </div>
     );
@@ -94,155 +105,139 @@ export function EditListingForm({
   if (isError) {
     return (
       <div className="py-8 text-center text-destructive">
-        {error instanceof Error
-          ? error.message
-          : "Không thể tải tin đăng"}
+        {error instanceof Error ? error.message : "Không thể tải tin đăng"}
       </div>
     );
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-      <div className="space-y-2">
-        <label
-          htmlFor="title"
-          className="text-sm font-medium"
-        >
-          Tiêu đề
-        </label>
+    <div className="space-y-6">
+      <Card className="w-full max-w-2xl mx-auto">
+        <CardHeader className="flex flex-col items-center text-center">
+          <CardTitle className="text-lg font-heading text-primary">
+            Chỉnh sửa tin đăng
+          </CardTitle>
+        </CardHeader>
 
-        <input
-          id="title"
-          {...form.register("title")}
-          className="w-full rounded-md border px-3 py-2"
-        />
+        <CardContent>
+          <form
+            id="edit-listing-form"
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
+            <FieldGroup>
+              {/* Tiêu đề */}
+              <Field data-invalid={!!form.formState.errors.title}>
+                <FieldLabel htmlFor="title">Tiêu đề</FieldLabel>
+                <Input
+                  id="title"
+                  disabled={isSubmitting}
+                  {...form.register("title")}
+                />
+                <FieldError>
+                  {form.formState.errors.title?.message}
+                </FieldError>
+              </Field>
 
-        {form.formState.errors.title && (
-          <p className="text-sm text-destructive">
-            {form.formState.errors.title.message}
-          </p>
-        )}
-      </div>
+              {/* Mô tả */}
+              <Field data-invalid={!!form.formState.errors.description}>
+                <FieldLabel htmlFor="description">Mô tả</FieldLabel>
+                <Textarea
+                  id="description"
+                  disabled={isSubmitting}
+                  rows={5}
+                  {...form.register("description")}
+                />
+                <FieldError>
+                  {form.formState.errors.description?.message}
+                </FieldError>
+              </Field>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="description"
-          className="text-sm font-medium"
-        >
-          Mô tả
-        </label>
+              {/* Giá */}
+              <Field data-invalid={!!form.formState.errors.price}>
+                <FieldLabel htmlFor="price">Giá</FieldLabel>
+                <Input
+                  id="price"
+                  type="number"
+                  min={0}
+                  disabled={isSubmitting}
+                  {...form.register("price", {
+                    valueAsNumber: true,
+                  })}
+                />
+                <FieldError>
+                  {form.formState.errors.price?.message}
+                </FieldError>
+              </Field>
 
-        <textarea
-          id="description"
-          {...form.register("description")}
-          rows={5}
-          className="w-full rounded-md border px-3 py-2"
-        />
+              {/* Quốc gia */}
+              <Field data-invalid={!!form.formState.errors.country}>
+                <FieldLabel htmlFor="country">Quốc gia</FieldLabel>
+                <Input
+                  id="country"
+                  disabled={isSubmitting}
+                  {...form.register("country")}
+                />
+                <FieldError>
+                  {form.formState.errors.country?.message}
+                </FieldError>
+              </Field>
 
-        {form.formState.errors.description && (
-          <p className="text-sm text-destructive">
-            {form.formState.errors.description.message}
-          </p>
-        )}
-      </div>
+              {/* Danh mục */}
+              <Field data-invalid={!!form.formState.errors.category}>
+                <FieldLabel htmlFor="category">Danh mục</FieldLabel>
+                <Input
+                  id="category"
+                  disabled={isSubmitting}
+                  {...form.register("category")}
+                />
+                <FieldError>
+                  {form.formState.errors.category?.message}
+                </FieldError>
+              </Field>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="price"
-          className="text-sm font-medium"
-        >
-          Giá
-        </label>
+              {/* Địa điểm */}
+              <Field data-invalid={!!form.formState.errors.location}>
+                <FieldLabel htmlFor="location">Địa điểm</FieldLabel>
+                <Input
+                  id="location"
+                  disabled={isSubmitting}
+                  {...form.register("location")}
+                />
+                <FieldError>
+                  {form.formState.errors.location?.message}
+                </FieldError>
+              </Field>
 
-        <input
-          id="price"
-          type="number"
-          min={0}
-          {...form.register("price", {
-            valueAsNumber: true,
-          })}
-          className="w-full rounded-md border px-3 py-2"
-        />
+              <div className="space-y-3">
+                <FieldLabel>Hình ảnh</FieldLabel>
+                  <p className= "text-sm text-muted-foreground">(Kéo thả để sắp xếp lại thứ tự ảnh)</p>
+                  <ListingImageUploadEdit listingId={listingId} />
+              </div>
+            </FieldGroup>
+          </form>
+        </CardContent>
 
-        {form.formState.errors.price && (
-          <p className="text-sm text-destructive">
-            {form.formState.errors.price.message}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2">
-        <label
-          htmlFor="country"
-          className="text-sm font-medium"
-        >
-          Quốc gia
-        </label>
-
-        <input
-          id="country"
-          {...form.register("country")}
-          className="w-full rounded-md border px-3 py-2"
-        />
-
-        {form.formState.errors.country && (
-          <p className="text-sm text-destructive">
-            {form.formState.errors.country.message}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2">
-        <label
-          htmlFor="category"
-          className="text-sm font-medium"
-        >
-          Danh mục
-        </label>
-
-        <input
-          id="category"
-          {...form.register("category")}
-          className="w-full rounded-md border px-3 py-2"
-        />
-
-        {form.formState.errors.category && (
-          <p className="text-sm text-destructive">
-            {form.formState.errors.category.message}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2">
-        <label
-          htmlFor="location"
-          className="text-sm font-medium"
-        >
-          Địa điểm
-        </label>
-
-        <input
-          id="location"
-          {...form.register("location")}
-          className="w-full rounded-md border px-3 py-2"
-        />
-
-        {form.formState.errors.location && (
-          <p className="text-sm text-destructive">
-            {form.formState.errors.location.message}
-          </p>
-        )}
-      </div>
-
-      <button
-        type="submit"
-        disabled={form.formState.isSubmitting}
-        className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
-      >
-        {form.formState.isSubmitting
-            ? "Đang lưu..."
-            : "Lưu thay đổi"}
-      </button>
-    </form>
+        <CardFooter>
+          <div className="flex w-full justify-end">
+            <Button
+              type="submit"
+              form="edit-listing-form"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Đang lưu..." : "Lưu thay đổi"}
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
+      {/* {listing && (
+        <Card>
+          <CardContent className="pt-6">
+            <ListingImageManagerSeftQuery
+              listingId={listing.id}
+            />
+          </CardContent>
+        </Card>
+      )} */}
+    </div>
   );
 }

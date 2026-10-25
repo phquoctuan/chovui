@@ -1,0 +1,1 @@
+ALTER TYPE "public"."status" RENAME TO "listing_status";

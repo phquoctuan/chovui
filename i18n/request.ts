@@ -10,7 +10,8 @@ export default getRequestConfig(async ({locale}) => {
     if (hasLocale(routing.locales, paramValue)) {
       locale = paramValue;
     } else {
-      notFound();
+      locale = routing.defaultLocale;
+      // notFound();
     }
   }
    const [

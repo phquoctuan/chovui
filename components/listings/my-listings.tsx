@@ -1,10 +1,28 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { getMyListings } from "@/lib/api/listings";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { Pencil, Trash2 } from "lucide-react";
+
+import { deleteListing, getMyListings } from "@/lib/api/listings";
 import { Link } from "@/i18n/navigation";
 
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 export function MyListings() {
+  const queryClient = useQueryClient();
+
   const {
     data: listings,
     isPending,
@@ -14,6 +32,29 @@ export function MyListings() {
     queryKey: ["my-listings"],
     queryFn: getMyListings,
   });
+
+  async function handleDelete(listingId: string) {
+    try {
+      await deleteListing(listingId);
+
+      await queryClient.invalidateQueries({
+        queryKey: ["my-listings"],
+      });
+
+      toast.success("Xóa tin đăng thành công");
+    } catch (error) {
+      console.error(
+        "Delete listing failed:",
+        error,
+      );
+
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Không thể xóa tin đăng",
+      );
+    }
+  }
 
   if (isPending) {
     return (
@@ -48,23 +89,76 @@ export function MyListings() {
           key={listing.id}
           className="rounded-lg border p-4"
         >
-          <h2 className="font-semibold">
-            {listing.title}
-          </h2>
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <h2 className="font-semibold">
+                {listing.title}
+              </h2>
 
-          <p className="mt-1 text-sm">
-            {listing.price.toLocaleString("vi-VN")} ₫
-          </p>
+              <p className="mt-1 text-sm">
+                {listing.price} ₫
+              </p>
 
-          <p className="mt-1 text-sm text-muted-foreground">
-            {listing.location}
-          </p>
-          <Link
-            href={`/listings/${listing.id}/edit`}
-            className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-            >
-            Edit
-          </Link>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {listing.location}
+              </p>
+            </div>
+
+            <div className="flex shrink-0 gap-2">
+              <Link
+                href={`/listings/${listing.id}/edit`}
+                className={buttonVariants({
+                  variant: "secondary",
+                  size: "sm",
+                })}
+              >
+                <Pencil />
+                Chỉnh sửa
+              </Link>
+
+              <AlertDialog>
+                <AlertDialogTrigger
+                  render={
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                    />
+                  }
+                >
+                  <Trash2 />
+                  Xóa
+                </AlertDialogTrigger>
+
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Xóa tin đăng?
+                    </AlertDialogTitle>
+
+                    <AlertDialogDescription>
+                      Bạn có chắc muốn xóa tin đăng
+                      &quot;{listing.title}&quot;?
+                      Hành động này không thể hoàn tác.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>
+                      Hủy
+                    </AlertDialogCancel>
+
+                    <AlertDialogAction
+                      onClick={() =>
+                        handleDelete(listing.id)
+                      }
+                    >
+                      Xóa tin đăng
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+          </div>
         </div>
       ))}
     </div>

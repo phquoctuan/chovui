@@ -2,23 +2,25 @@ import {
   mockListings,
   type MockListing,
 } from "@/data/mock-listings";
-import {PAGE_SIZE_OPTIONS, DEFAULT_PAGE_SIZE} from "@/components/const";
+import {PAGE_SIZE_OPTIONS, DEFAULT_PAGE_SIZE} from "@/const.js";
+import { integer } from 'drizzle-orm/pg-core';
+import {type Listing } from "@/db/schema";
 
 // const PAGE_SIZE_OPTIONS = [2, 10, 20, 30, 50] as const;
 // const DEFAULT_PAGE_SIZE = 2;
 
 export type ListingQuery = {
   q?: string;
-  country?: string;
-  category?: string;
-  location?: string;
+  country?: number;
+  category?: number;
+  location?: number;
   minPrice?: string;
   maxPrice?: string;
   page?: string;
   pageSize?: string;
 };
 
-export type ListingResult = {
+export type MockListingResult = {
   listings: MockListing[];
   totalItems: number;
   totalPages: number;
@@ -26,7 +28,15 @@ export type ListingResult = {
   pageSize: number;
 };
 
-export function getMockListings(query: ListingQuery,): ListingResult 
+export type ListingResult = {
+  listings: Listing[];
+  totalItems: number;
+  totalPages: number;
+  currentPage: number;
+  pageSize: number;
+};
+
+export function getMockListings(query: ListingQuery,): MockListingResult 
 {
   const {
     q,
@@ -60,16 +70,16 @@ export function getMockListings(query: ListingQuery,): ListingResult
           .includes(q.toLowerCase());
 
       const matchesCountry =
-        !country || listing.country === country;
+        !country || listing.country === String(country);
 
       const matchesCategory =
-        !category || listing.category === category;
+        !category || listing.category === String(category);
 
       const matchesLocation =
         !location ||
         listing.location
           .toLowerCase()
-          .includes(location.toLowerCase());
+          .includes(String(location).toLowerCase());
 
       const matchesMinPrice =
         !minPrice ||

@@ -13,11 +13,33 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
-
+  user: {
+    changeEmail: {
+      enabled: true,
+      updateEmailWithoutVerification: false,
+    },
+  },
   emailAndPassword: {
     enabled: true,
   },
-
+  // Bổ sung thêm session additionalFields ở đây:
+  session: {
+    additionalFields: {
+      // await authClient.updateSession({countryId: countryId});
+      countryId: {
+        type: "number",
+        required: false,
+        defaultValue: null,
+        input: true, // cho phép client gửi lên trực tiếp hay qua hàm updateSession
+      },
+      regionId: {
+        type: "number",
+        required: false,
+        defaultValue: null,
+        input: true, // cho phép client gửi lên trực tiếp hay qua hàm updateSession
+      },
+    },
+  },
   plugins: [
     username(),
     admin({

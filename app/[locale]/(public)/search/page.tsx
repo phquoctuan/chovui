@@ -13,7 +13,7 @@ export default async function SearchPage({
   const queryParams = await searchParams;
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-8">
+    <section className="mx-auto max-w-7xl px-4 py-8">
       <h1 className="text-2xl font-bold">
         Kết quả tìm kiếm
       </h1>
@@ -29,6 +29,6 @@ export default async function SearchPage({
           <ListingSearchResults query={queryParams} />
         </section>
       </div>
-    </main>
+    </section>
   );
 }
