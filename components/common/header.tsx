@@ -19,10 +19,12 @@ import { UserAccountMenu } from "@/components/common/user-account-menu";
 import { CategoryMenu } from "@/components/categories/category-menu";
 import { MobileCategoryMenu } from "@/components/categories/mobile-category-menu";
 import { LanguageSwitcher } from './language-switcher';
+import { useLocale } from "next-intl";
 // import { TrendingUp } from 'lucide-react';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const currentLocale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +67,7 @@ export function Header() {
               <Menu className="w-6 h-6" />
             </button> */}
             {/* <CategoryMenu locale="vi" smallIcon hideTitle isMobile/> */}
-            <MobileCategoryMenu locale="vi" />
+            <MobileCategoryMenu locale={currentLocale} />
 
             {/* Ô tìm kiếm bo góc tròn viền trắng */}
             <div className="flex-1 flex items-center bg-white rounded-full px-3 py-2 shadow-sm border border-slate-100">
@@ -115,11 +117,10 @@ export function Header() {
                     <img alt="logo" src="/images/logohp.svg" className="-mt-[5px]"/>
                   </div>
                 </Link>
-                {/* <LanguageSwitcher /> */}
                 {/* Cụm Tìm kiếm + Nút Danh mục (Giữ nguyên Icon Menu 3 gạch) */}
                 <div className="flex-1 max-w-4xl flex items-center gap-2">
                   {/* Nút Danh mục: Chỉ giữ Icon Menu 3 gạch gốc */}
-                  <CategoryMenu locale="vi" smallIcon/>
+                  <CategoryMenu locale={currentLocale} smallIcon/>
                   {/* <button
                     className="flex items-center justify-center bg-white hover:bg-slate-50 text-slate-800 p-2.5 rounded-md shadow-sm transition-colors flex-shrink-0"
                     title="Danh mục"
@@ -171,7 +172,7 @@ export function Header() {
                   </Link>
 
                   <Link
-                    href="#"
+                    href="/listings/create"
                     className="flex items-center gap-1 bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-md text-xs font-bold shadow-sm transition-colors"
                   >
                     <PlusCircle className="w-4 h-4" />
@@ -236,7 +237,7 @@ export function Header() {
                     </Link>
 
                     <Link
-                      href="#"
+                      href="/listings"
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 hover:bg-white rounded-md text-xs font-semibold text-slate-800 transition-colors"
                     >
                       <FileText className="w-4 h-4 text-slate-700" />
@@ -276,7 +277,7 @@ export function Header() {
                   </button> */}
 
                   {/* Nút Danh mục kèm Popover Flyout */}
-                  <CategoryMenu locale="vi" hideTitle/>
+                  <CategoryMenu locale={currentLocale} hideTitle/>
                   {/* Cụm Tìm kiếm */}
                   <div className="flex-1 flex items-center bg-white rounded-md overflow-hidden shadow-sm border border-slate-200">
                     <div className="flex items-center gap-2.5 pl-3.5 flex-1 py-2">

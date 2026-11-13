@@ -1,0 +1,3532 @@
+[
+  {
+    "name": "Johor",
+    "name_en": "Johor",
+    "code": "MY-01",
+    "postal_code": "80000-86999",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Johor Bahru",
+        "name_en": "Johor Bahru",
+        "code": "MY-01-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Johor Bahru",
+            "name_en": "Johor Bahru City",
+            "code": "MY-01-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Plentong",
+            "name_en": "Plentong",
+            "code": "MY-01-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tebrau",
+            "name_en": "Tebrau",
+            "code": "MY-01-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pulai",
+            "name_en": "Pulai",
+            "code": "MY-01-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Kupang",
+            "name_en": "Tanjung Kupang",
+            "code": "MY-01-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sunway Iskandar",
+            "name_en": "Sunway Iskandar",
+            "code": "MY-01-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Batu Pahat",
+        "name_en": "Batu Pahat",
+        "code": "MY-01-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Simpang Kanan",
+            "name_en": "Simpang Kanan",
+            "code": "MY-01-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sri Gading",
+            "name_en": "Sri Gading",
+            "code": "MY-01-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Simpang Kiri",
+            "name_en": "Simpang Kiri",
+            "code": "MY-01-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bagan",
+            "name_en": "Bagan",
+            "code": "MY-01-02-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Chaah Bahru",
+            "name_en": "Chaah Bahru",
+            "code": "MY-01-02-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Linau",
+            "name_en": "Linau",
+            "code": "MY-01-02-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lubok",
+            "name_en": "Lubok",
+            "code": "MY-01-02-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Minyak Beku",
+            "name_en": "Minyak Beku",
+            "code": "MY-01-02-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Peserai",
+            "name_en": "Peserai",
+            "code": "MY-01-02-09",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Kluang",
+            "name_en": "Sungai Kluang",
+            "code": "MY-01-02-10",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Punggor",
+            "name_en": "Sungai Punggor",
+            "code": "MY-01-02-11",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Semberong",
+            "name_en": "Tanjung Semberong",
+            "code": "MY-01-02-12",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kluang",
+        "name_en": "Kluang",
+        "code": "MY-01-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kluang",
+            "name_en": "Kluang Town",
+            "code": "MY-01-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Machap",
+            "name_en": "Machap",
+            "code": "MY-01-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Niyor",
+            "name_en": "Niyor",
+            "code": "MY-01-03-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Paloh",
+            "name_en": "Paloh",
+            "code": "MY-01-03-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Renggam",
+            "name_en": "Renggam",
+            "code": "MY-01-03-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Layang-Layang",
+            "name_en": "Layang-Layang",
+            "code": "MY-01-03-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kahang",
+            "name_en": "Kahang",
+            "code": "MY-01-03-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ulu Benut",
+            "name_en": "Ulu Benut",
+            "code": "MY-01-03-08",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kota Tinggi",
+        "name_en": "Kota Tinggi",
+        "code": "MY-01-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kota Tinggi",
+            "name_en": "Kota Tinggi Town",
+            "code": "MY-01-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pengerang",
+            "name_en": "Pengerang",
+            "code": "MY-01-04-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Surat",
+            "name_en": "Tanjung Surat",
+            "code": "MY-01-04-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sedili Besar",
+            "name_en": "Sedili Besar",
+            "code": "MY-01-04-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sedili Kecil",
+            "name_en": "Sedili Kecil",
+            "code": "MY-01-04-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ulu Sungai Johor",
+            "name_en": "Ulu Sungai Johor",
+            "code": "MY-01-04-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Johor Lama",
+            "name_en": "Johor Lama",
+            "code": "MY-01-04-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pulai",
+            "name_en": "Pulai",
+            "code": "MY-01-04-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kambau",
+            "name_en": "Kambau",
+            "code": "MY-01-04-09",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pantai Timur",
+            "name_en": "Pantai Timur",
+            "code": "MY-01-04-10",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kulai",
+        "name_en": "Kulai",
+        "code": "MY-01-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kulai",
+            "name_en": "Kulai Town",
+            "code": "MY-01-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Senai",
+            "name_en": "Senai",
+            "code": "MY-01-05-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sedenak",
+            "name_en": "Sedenak",
+            "code": "MY-01-05-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Batu",
+            "name_en": "Bukit Batu",
+            "code": "MY-01-05-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Muar",
+        "name_en": "Muar",
+        "code": "MY-01-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Muar",
+            "name_en": "Muar Town",
+            "code": "MY-01-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ayer Hitam",
+            "name_en": "Ayer Hitam",
+            "code": "MY-01-06-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Kepong",
+            "name_en": "Bukit Kepong",
+            "code": "MY-01-06-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jalan Bakri",
+            "name_en": "Jalan Bakri",
+            "code": "MY-01-06-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Parit Jawa",
+            "name_en": "Parit Jawa",
+            "code": "MY-01-06-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Parit Bakakar",
+            "name_en": "Parit Bakakar",
+            "code": "MY-01-06-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Balang",
+            "name_en": "Sungai Balang",
+            "code": "MY-01-06-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Raya",
+            "name_en": "Sungai Raya",
+            "code": "MY-01-06-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Terap",
+            "name_en": "Sungai Terap",
+            "code": "MY-01-06-09",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lenga",
+            "name_en": "Lenga",
+            "code": "MY-01-06-10",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Seram",
+            "name_en": "Seram",
+            "code": "MY-01-06-11",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Mersing",
+        "name_en": "Mersing",
+        "code": "MY-01-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Mersing",
+            "name_en": "Mersing Town",
+            "code": "MY-01-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jemaluang",
+            "name_en": "Jemaluang",
+            "code": "MY-01-07-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Padang",
+            "name_en": "Padang",
+            "code": "MY-01-07-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Penyabong",
+            "name_en": "Penyabong",
+            "code": "MY-01-07-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pulau Babi",
+            "name_en": "Pulau Babi",
+            "code": "MY-01-07-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pulau Tinggi",
+            "name_en": "Pulau Tinggi",
+            "code": "MY-01-07-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tenglu",
+            "name_en": "Tenglu",
+            "code": "MY-01-07-07",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Pontian",
+        "name_en": "Pontian",
+        "code": "MY-01-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Pontian Kechil",
+            "name_en": "Pontian Kechil",
+            "code": "MY-01-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pontian Besar",
+            "name_en": "Pontian Besar",
+            "code": "MY-01-08-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ayer Baloi",
+            "name_en": "Ayer Baloi",
+            "code": "MY-01-08-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ayer Masin",
+            "name_en": "Ayer Masin",
+            "code": "MY-01-08-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Benut",
+            "name_en": "Benut",
+            "code": "MY-01-08-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pekan Nanas",
+            "name_en": "Pekan Nanas",
+            "code": "MY-01-08-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Rimba Terjun",
+            "name_en": "Rimba Terjun",
+            "code": "MY-01-08-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Serkat",
+            "name_en": "Serkat",
+            "code": "MY-01-08-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Pinggan",
+            "name_en": "Sungai Pinggan",
+            "code": "MY-01-08-09",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Segamat",
+        "name_en": "Segamat",
+        "code": "MY-01-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Segamat",
+            "name_en": "Segamat Town",
+            "code": "MY-01-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bekok",
+            "name_en": "Bekok",
+            "code": "MY-01-09-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Buloh Kasap",
+            "name_en": "Buloh Kasap",
+            "code": "MY-01-09-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Chaah",
+            "name_en": "Chaah",
+            "code": "MY-01-09-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gemereh",
+            "name_en": "Gemereh",
+            "code": "MY-01-09-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jabi",
+            "name_en": "Jabi",
+            "code": "MY-01-09-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Labis",
+            "name_en": "Labis",
+            "code": "MY-01-09-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pogoh",
+            "name_en": "Pogoh",
+            "code": "MY-01-09-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Segamat",
+            "name_en": "Sungai Segamat",
+            "code": "MY-01-09-09",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Tangkak",
+        "name_en": "Tangkak",
+        "code": "MY-01-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Tangkak",
+            "name_en": "Tangkak Town",
+            "code": "MY-01-10-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Serampang",
+            "name_en": "Bukit Serampang",
+            "code": "MY-01-10-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gresik",
+            "name_en": "Gresik",
+            "code": "MY-01-10-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ledang",
+            "name_en": "Ledang",
+            "code": "MY-01-10-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kundang",
+            "name_en": "Kundang",
+            "code": "MY-01-10-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Serom",
+            "name_en": "Serom",
+            "code": "MY-01-10-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kedah",
+    "name_en": "Kedah",
+    "code": "MY-02",
+    "postal_code": "05000-09810",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kota Setar",
+        "name_en": "Kota Setar",
+        "code": "MY-02-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Alor Setar",
+            "name_en": "Alor Setar City",
+            "code": "MY-02-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Anak Bukit",
+            "name_en": "Anak Bukit",
+            "code": "MY-02-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Derga",
+            "name_en": "Derga",
+            "code": "MY-02-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Langgar",
+            "name_en": "Langgar",
+            "code": "MY-02-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Alor Merah",
+            "name_en": "Alor Merah",
+            "code": "MY-02-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Kedah",
+            "name_en": "Kuala Kedah",
+            "code": "MY-02-01-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pengkalan Kundor",
+            "name_en": "Pengkalan Kundor",
+            "code": "MY-02-01-07",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Muda",
+        "name_en": "Kuala Muda",
+        "code": "MY-02-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Sungai Petani",
+            "name_en": "Sungai Petani Town",
+            "code": "MY-02-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bedong",
+            "name_en": "Bedong",
+            "code": "MY-02-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gurun",
+            "name_en": "Gurun",
+            "code": "MY-02-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tikam Batu",
+            "name_en": "Tikam Batu",
+            "code": "MY-02-02-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Semeling",
+            "name_en": "Semeling",
+            "code": "MY-02-02-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Merbok",
+            "name_en": "Merbok",
+            "code": "MY-02-02-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jeniang",
+            "name_en": "Jeniang",
+            "code": "MY-02-02-07",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kubang Pasu",
+        "name_en": "Kubang Pasu",
+        "code": "MY-02-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Jitra",
+            "name_en": "Jitra Town",
+            "code": "MY-02-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Changloon",
+            "name_en": "Changloon",
+            "code": "MY-02-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Kayu Hitam",
+            "name_en": "Bukit Kayu Hitam",
+            "code": "MY-02-03-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kodiang",
+            "name_en": "Kodiang",
+            "code": "MY-02-03-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kubang Pasu",
+            "name_en": "Kubang Pasu",
+            "code": "MY-02-03-05",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kulim",
+        "name_en": "Kulim",
+        "code": "MY-02-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kulim Bandar",
+            "name_en": "Kulim Town",
+            "code": "MY-02-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lunas",
+            "name_en": "Lunas",
+            "code": "MY-02-04-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Padang Serai",
+            "name_en": "Padang Serai",
+            "code": "MY-02-04-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Karangan",
+            "name_en": "Karangan",
+            "code": "MY-02-04-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Mahang",
+            "name_en": "Mahang",
+            "code": "MY-02-04-05",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Langkawi",
+        "name_en": "Langkawi",
+        "code": "MY-02-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuah",
+            "name_en": "Kuah Town",
+            "code": "MY-02-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Padang Matsirat",
+            "name_en": "Padang Matsirat",
+            "code": "MY-02-05-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kedawang",
+            "name_en": "Kedawang",
+            "code": "MY-02-05-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bohor",
+            "name_en": "Bohor",
+            "code": "MY-02-05-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ayer Hangat",
+            "name_en": "Ayer Hangat",
+            "code": "MY-02-05-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ulu Melaka",
+            "name_en": "Ulu Melaka",
+            "code": "MY-02-05-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Baling",
+        "name_en": "Baling",
+        "code": "MY-02-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Baling Town",
+            "name_en": "Baling Town",
+            "code": "MY-02-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kupang",
+            "name_en": "Kupang",
+            "code": "MY-02-06-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Ketil",
+            "name_en": "Kuala Ketil",
+            "code": "MY-02-06-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Siong",
+            "name_en": "Siong",
+            "code": "MY-02-06-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Padang Terap",
+        "name_en": "Padang Terap",
+        "code": "MY-02-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Nerang",
+            "name_en": "Kuala Nerang",
+            "code": "MY-02-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Durian Burung",
+            "name_en": "Durian Burung",
+            "code": "MY-02-07-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sik",
+        "name_en": "Sik",
+        "code": "MY-02-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Sik",
+            "name_en": "Sik Town",
+            "code": "MY-02-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jeneri",
+            "name_en": "Jeneri",
+            "code": "MY-02-08-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Yan",
+        "name_en": "Yan",
+        "code": "MY-02-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Yan Kechil",
+            "name_en": "Yan Kechil",
+            "code": "MY-02-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Guar Chempedak",
+            "name_en": "Guar Chempedak",
+            "code": "MY-02-09-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Pendang",
+        "name_en": "Pendang",
+        "code": "MY-02-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Pendang Town",
+            "name_en": "Pendang Town",
+            "code": "MY-02-10-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Guar Kepayang",
+            "name_en": "Guar Kepayang",
+            "code": "MY-02-10-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Pokok Sena",
+        "name_en": "Pokok Sena",
+        "code": "MY-02-11",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Pokok Sena Town",
+            "name_en": "Pokok Sena Town",
+            "code": "MY-02-11-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jabi",
+            "name_en": "Jabi",
+            "code": "MY-02-11-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Bandar Baharu",
+        "name_en": "Bandar Baharu",
+        "code": "MY-02-12",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Serdang",
+            "name_en": "Serdang",
+            "code": "MY-02-12-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bandar Baharu Town",
+            "name_en": "Bandar Baharu Town",
+            "code": "MY-02-12-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kelantan",
+    "name_en": "Kelantan",
+    "code": "MY-03",
+    "postal_code": "15000-18500",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kota Bharu",
+        "name_en": "Kota Bharu",
+        "code": "MY-03-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kota Bharu",
+            "name_en": "Kota Bharu City",
+            "code": "MY-03-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kubang Kerian",
+            "name_en": "Kubang Kerian",
+            "code": "MY-03-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pengkalan Chepa",
+            "name_en": "Pengkalan Chepa",
+            "code": "MY-03-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Panchor",
+            "name_en": "Panchor",
+            "code": "MY-03-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ketereh",
+            "name_en": "Ketereh",
+            "code": "MY-03-01-05",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Bachok",
+        "name_en": "Bachok",
+        "code": "MY-03-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bachok Town",
+            "name_en": "Bachok Town",
+            "code": "MY-03-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tangok",
+            "name_en": "Tangok",
+            "code": "MY-03-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Beris Lalang",
+            "name_en": "Beris Lalang",
+            "code": "MY-03-02-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Gua Musang",
+        "name_en": "Gua Musang",
+        "code": "MY-03-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Gua Musang",
+            "name_en": "Gua Musang Town",
+            "code": "MY-03-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Chiku",
+            "name_en": "Chiku",
+            "code": "MY-03-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bertam",
+            "name_en": "Bertam",
+            "code": "MY-03-03-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Jeli",
+        "name_en": "Jeli",
+        "code": "MY-03-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Jeli Town",
+            "name_en": "Jeli Town",
+            "code": "MY-03-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Balah",
+            "name_en": "Kuala Balah",
+            "code": "MY-03-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Machang",
+        "name_en": "Machang",
+        "code": "MY-03-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Machang",
+            "name_en": "Machang Town",
+            "code": "MY-03-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Labok",
+            "name_en": "Labok",
+            "code": "MY-03-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Pasir Mas",
+        "name_en": "Pasir Mas",
+        "code": "MY-03-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Pasir Mas",
+            "name_en": "Pasir Mas Town",
+            "code": "MY-03-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Rantau Panjang",
+            "name_en": "Rantau Panjang",
+            "code": "MY-03-06-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bunut Susu",
+            "name_en": "Bunut Susu",
+            "code": "MY-03-06-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Pasir Puteh",
+        "name_en": "Pasir Puteh",
+        "code": "MY-03-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Pasir Puteh",
+            "name_en": "Pasir Puteh Town",
+            "code": "MY-03-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jeram",
+            "name_en": "Jeram",
+            "code": "MY-03-07-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Tanah Merah",
+        "name_en": "Tanah Merah",
+        "code": "MY-03-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Tanah Merah",
+            "name_en": "Tanah Merah Town",
+            "code": "MY-03-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kusial",
+            "name_en": "Kusial",
+            "code": "MY-03-08-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Tumpat",
+        "name_en": "Tumpat",
+        "code": "MY-03-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Tumpat",
+            "name_en": "Tumpat Town",
+            "code": "MY-03-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pengkalan Kubor",
+            "name_en": "Pengkalan Kubor",
+            "code": "MY-03-09-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Wakaf Bharu",
+            "name_en": "Wakaf Bharu",
+            "code": "MY-03-09-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Krai",
+        "name_en": "Kuala Krai",
+        "code": "MY-03-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kuala Krai",
+            "name_en": "Kuala Krai Town",
+            "code": "MY-03-10-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Dabong",
+            "name_en": "Dabong",
+            "code": "MY-03-10-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Mani",
+            "name_en": "Mani",
+            "code": "MY-03-10-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Melaka",
+    "name_en": "Malacca",
+    "code": "MY-04",
+    "postal_code": "75000-78300",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Melaka Tengah",
+        "name_en": "Central Malacca",
+        "code": "MY-04-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Melaka",
+            "name_en": "Malacca City",
+            "code": "MY-04-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ayer Keroh",
+            "name_en": "Ayer Keroh",
+            "code": "MY-04-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Berendam",
+            "name_en": "Batu Berendam",
+            "code": "MY-04-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Beruang",
+            "name_en": "Bukit Beruang",
+            "code": "MY-04-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Klebang",
+            "name_en": "Klebang",
+            "code": "MY-04-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Udang",
+            "name_en": "Sungai Udang",
+            "code": "MY-04-01-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Minyak",
+            "name_en": "Tanjung Minyak",
+            "code": "MY-04-01-07",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Alor Gajah",
+        "name_en": "Alor Gajah",
+        "code": "MY-04-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Alor Gajah",
+            "name_en": "Alor Gajah Town",
+            "code": "MY-04-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Masjid Tanah",
+            "name_en": "Masjid Tanah",
+            "code": "MY-04-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pulau Sebang",
+            "name_en": "Pulau Sebang",
+            "code": "MY-04-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Sungai Baru",
+            "name_en": "Kuala Sungai Baru",
+            "code": "MY-04-02-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Jasin",
+        "name_en": "Jasin",
+        "code": "MY-04-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Jasin",
+            "name_en": "Jasin Town",
+            "code": "MY-04-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Merlimau",
+            "name_en": "Merlimau",
+            "code": "MY-04-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Rambai",
+            "name_en": "Sungai Rambai",
+            "code": "MY-04-03-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Asahan",
+            "name_en": "Asahan",
+            "code": "MY-04-03-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Negeri Sembilan",
+    "name_en": "Negeri Sembilan",
+    "code": "MY-05",
+    "postal_code": "70000-73600",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Seremban",
+        "name_en": "Seremban",
+        "code": "MY-05-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Seremban Town",
+            "name_en": "Seremban City",
+            "code": "MY-05-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Senawang",
+            "name_en": "Senawang",
+            "code": "MY-05-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Nilai",
+            "name_en": "Nilai",
+            "code": "MY-05-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Rasah",
+            "name_en": "Rasah",
+            "code": "MY-05-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ampangan",
+            "name_en": "Ampangan",
+            "code": "MY-05-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Labu",
+            "name_en": "Labu",
+            "code": "MY-05-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Port Dickson",
+        "name_en": "Port Dickson",
+        "code": "MY-05-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Port Dickson",
+            "name_en": "Port Dickson Town",
+            "code": "MY-05-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lukut",
+            "name_en": "Lukut",
+            "code": "MY-05-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Teluk Kemang",
+            "name_en": "Teluk Kemang",
+            "code": "MY-05-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Linggi",
+            "name_en": "Linggi",
+            "code": "MY-05-02-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Jempol",
+        "name_en": "Jempol",
+        "code": "MY-05-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bahau",
+            "name_en": "Bahau",
+            "code": "MY-05-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Kikir",
+            "name_en": "Batu Kikir",
+            "code": "MY-05-03-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Pilah",
+        "name_en": "Kuala Pilah",
+        "code": "MY-05-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kuala Pilah",
+            "name_en": "Kuala Pilah Town",
+            "code": "MY-05-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Juasseh",
+            "name_en": "Juasseh",
+            "code": "MY-05-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Rembau",
+        "name_en": "Rembau",
+        "code": "MY-05-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Rembau",
+            "name_en": "Rembau Town",
+            "code": "MY-05-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pedas",
+            "name_en": "Pedas",
+            "code": "MY-05-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Tampin",
+        "name_en": "Tampin",
+        "code": "MY-05-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Tampin",
+            "name_en": "Tampin Town",
+            "code": "MY-05-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gemas",
+            "name_en": "Gemas",
+            "code": "MY-05-06-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Jelebu",
+        "name_en": "Jelebu",
+        "code": "MY-05-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Klawang",
+            "name_en": "Kuala Klawang",
+            "code": "MY-05-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Simpang Pertang",
+            "name_en": "Simpang Pertang",
+            "code": "MY-05-07-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pahang",
+    "name_en": "Pahang",
+    "code": "MY-06",
+    "postal_code": "25000-28800",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kuantan",
+        "name_en": "Kuantan",
+        "code": "MY-06-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kuantan",
+            "name_en": "Kuantan City",
+            "code": "MY-06-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Indera Mahkota",
+            "name_en": "Indera Mahkota",
+            "code": "MY-06-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gebeng",
+            "name_en": "Gebeng",
+            "code": "MY-06-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gambang",
+            "name_en": "Gambang",
+            "code": "MY-06-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Beserah",
+            "name_en": "Beserah",
+            "code": "MY-06-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Karang",
+            "name_en": "Sungai Karang",
+            "code": "MY-06-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Bentong",
+        "name_en": "Bentong",
+        "code": "MY-06-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Bentong",
+            "name_en": "Bentong Town",
+            "code": "MY-06-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Genting Highlands",
+            "name_en": "Genting Highlands",
+            "code": "MY-06-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Karak",
+            "name_en": "Karak",
+            "code": "MY-06-02-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Cameron Highlands",
+        "name_en": "Cameron Highlands",
+        "code": "MY-06-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Tanah Rata",
+            "name_en": "Tanah Rata",
+            "code": "MY-06-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Brinchang",
+            "name_en": "Brinchang",
+            "code": "MY-06-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ringlet",
+            "name_en": "Ringlet",
+            "code": "MY-06-03-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Temerloh",
+        "name_en": "Temerloh",
+        "code": "MY-06-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Temerloh",
+            "name_en": "Temerloh Town",
+            "code": "MY-06-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Mentakab",
+            "name_en": "Mentakab",
+            "code": "MY-06-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Jerantut",
+        "name_en": "Jerantut",
+        "code": "MY-06-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Jerantut",
+            "name_en": "Jerantut Town",
+            "code": "MY-06-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Tembeling",
+            "name_en": "Kuala Tembeling",
+            "code": "MY-06-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Pekan",
+        "name_en": "Pekan",
+        "code": "MY-06-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Pekan",
+            "name_en": "Pekan Town",
+            "code": "MY-06-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Nenang",
+            "name_en": "Nenang",
+            "code": "MY-06-06-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Raub",
+        "name_en": "Raub",
+        "code": "MY-06-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Raub",
+            "name_en": "Raub Town",
+            "code": "MY-06-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sega",
+            "name_en": "Sega",
+            "code": "MY-06-07-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Rompin",
+        "name_en": "Rompin",
+        "code": "MY-06-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Rompin",
+            "name_en": "Kuala Rompin",
+            "code": "MY-06-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tioman",
+            "name_en": "Tioman Island",
+            "code": "MY-06-08-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Maran",
+        "name_en": "Maran",
+        "code": "MY-06-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Maran",
+            "name_en": "Maran Town",
+            "code": "MY-06-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Chenor",
+            "name_en": "Chenor",
+            "code": "MY-06-09-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Bera",
+        "name_en": "Bera",
+        "code": "MY-06-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Bera",
+            "name_en": "Bera Town",
+            "code": "MY-06-10-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Triang",
+            "name_en": "Triang",
+            "code": "MY-06-10-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Lipis",
+        "name_en": "Lipis",
+        "code": "MY-06-11",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Lipis",
+            "name_en": "Kuala Lipis",
+            "code": "MY-06-11-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Penjom",
+            "name_en": "Penjom",
+            "code": "MY-06-11-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Penang",
+    "name_en": "Penang",
+    "code": "MY-07",
+    "postal_code": "10000-14400",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Timur Laut",
+        "name_en": "Northeast Penang Island",
+        "code": "MY-07-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "George Town",
+            "name_en": "George Town City",
+            "code": "MY-07-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ayer Itam",
+            "name_en": "Ayer Itam",
+            "code": "MY-07-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Tokong",
+            "name_en": "Tanjung Tokong",
+            "code": "MY-07-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Ferringhi",
+            "name_en": "Batu Ferringhi",
+            "code": "MY-07-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jelutong",
+            "name_en": "Jelutong",
+            "code": "MY-07-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gelugor",
+            "name_en": "Gelugor",
+            "code": "MY-07-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Barat Daya",
+        "name_en": "Southwest Penang Island",
+        "code": "MY-07-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bayan Lepas",
+            "name_en": "Bayan Lepas",
+            "code": "MY-07-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Balik Pulau",
+            "name_en": "Balik Pulau",
+            "code": "MY-07-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Teluk Bahang",
+            "name_en": "Teluk Bahang",
+            "code": "MY-07-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Maung",
+            "name_en": "Batu Maung",
+            "code": "MY-07-02-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Seberang Perai Utara",
+        "name_en": "North Seberang Perai",
+        "code": "MY-07-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Butterworth",
+            "name_en": "Butterworth",
+            "code": "MY-07-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kepala Batas",
+            "name_en": "Kepala Batas",
+            "code": "MY-07-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Penaga",
+            "name_en": "Penaga",
+            "code": "MY-07-03-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tasek Gelugor",
+            "name_en": "Tasek Gelugor",
+            "code": "MY-07-03-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Seberang Perai Tengah",
+        "name_en": "Central Seberang Perai",
+        "code": "MY-07-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bukit Mertajam",
+            "name_en": "Bukit Mertajam",
+            "code": "MY-07-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Perai",
+            "name_en": "Perai",
+            "code": "MY-07-04-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Alma",
+            "name_en": "Alma",
+            "code": "MY-07-04-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Permatang Pauh",
+            "name_en": "Permatang Pauh",
+            "code": "MY-07-04-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Seberang Perai Selatan",
+        "name_en": "South Seberang Perai",
+        "code": "MY-07-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Nibong Tebal",
+            "name_en": "Nibong Tebal",
+            "code": "MY-07-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Kawan",
+            "name_en": "Batu Kawan",
+            "code": "MY-07-05-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Bakap",
+            "name_en": "Sungai Bakap",
+            "code": "MY-07-05-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Simpang Ampat",
+            "name_en": "Simpang Ampat",
+            "code": "MY-07-05-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Perak",
+    "name_en": "Perak",
+    "code": "MY-08",
+    "postal_code": "30000-36810",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kinta",
+        "name_en": "Kinta",
+        "code": "MY-08-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Ipoh",
+            "name_en": "Ipoh City",
+            "code": "MY-08-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Gajah",
+            "name_en": "Batu Gajah",
+            "code": "MY-08-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tambun",
+            "name_en": "Tambun",
+            "code": "MY-08-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Menglembu",
+            "name_en": "Menglembu",
+            "code": "MY-08-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Chemor",
+            "name_en": "Chemor",
+            "code": "MY-08-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Rambutan",
+            "name_en": "Tanjung Rambutan",
+            "code": "MY-08-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Larut, Matang dan Selama",
+        "name_en": "Larut, Matang and Selama",
+        "code": "MY-08-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Taiping",
+            "name_en": "Taiping",
+            "code": "MY-08-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kamunting",
+            "name_en": "Kamunting",
+            "code": "MY-08-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Matang",
+            "name_en": "Matang",
+            "code": "MY-08-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Selama",
+            "name_en": "Selama",
+            "code": "MY-08-02-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Manjung",
+        "name_en": "Manjung",
+        "code": "MY-08-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Seri Manjung",
+            "name_en": "Seri Manjung",
+            "code": "MY-08-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sitiawan",
+            "name_en": "Sitiawan",
+            "code": "MY-08-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lumut",
+            "name_en": "Lumut",
+            "code": "MY-08-03-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pangkor",
+            "name_en": "Pangkor Island",
+            "code": "MY-08-03-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Hilir Perak",
+        "name_en": "Hilir Perak",
+        "code": "MY-08-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Teluk Intan",
+            "name_en": "Teluk Intan",
+            "code": "MY-08-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Langkap",
+            "name_en": "Langkap",
+            "code": "MY-08-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Batang Padang",
+        "name_en": "Batang Padang",
+        "code": "MY-08-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Tapah",
+            "name_en": "Tapah",
+            "code": "MY-08-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bidor",
+            "name_en": "Bidor",
+            "code": "MY-08-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Muallim",
+        "name_en": "Muallim",
+        "code": "MY-08-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Tanjung Malim",
+            "name_en": "Tanjung Malim",
+            "code": "MY-08-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Slim River",
+            "name_en": "Slim River",
+            "code": "MY-08-06-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kerian",
+        "name_en": "Kerian",
+        "code": "MY-08-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Parit Buntar",
+            "name_en": "Parit Buntar",
+            "code": "MY-08-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bagan Serai",
+            "name_en": "Bagan Serai",
+            "code": "MY-08-07-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Kangsar",
+        "name_en": "Kuala Kangsar",
+        "code": "MY-08-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kuala Kangsar",
+            "name_en": "Kuala Kangsar",
+            "code": "MY-08-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Siput",
+            "name_en": "Sungai Siput",
+            "code": "MY-08-08-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Hulu Perak",
+        "name_en": "Hulu Perak",
+        "code": "MY-08-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Gerik",
+            "name_en": "Gerik",
+            "code": "MY-08-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lenggong",
+            "name_en": "Lenggong",
+            "code": "MY-08-09-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pengkalan Hulu",
+            "name_en": "Pengkalan Hulu",
+            "code": "MY-08-09-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kampar",
+        "name_en": "Kampar",
+        "code": "MY-08-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kampar Town",
+            "name_en": "Kampar Town",
+            "code": "MY-08-10-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Gopeng",
+            "name_en": "Gopeng",
+            "code": "MY-08-10-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Perak Tengah",
+        "name_en": "Perak Tengah",
+        "code": "MY-08-11",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Seri Iskandar",
+            "name_en": "Seri Iskandar",
+            "code": "MY-08-11-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Parit",
+            "name_en": "Parit",
+            "code": "MY-08-11-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Bagan Datuk",
+        "name_en": "Bagan Datuk",
+        "code": "MY-08-12",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bagan Datuk Town",
+            "name_en": "Bagan Datuk",
+            "code": "MY-08-12-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Rungkup",
+            "name_en": "Rungkup",
+            "code": "MY-08-12-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Perlis",
+    "name_en": "Perlis",
+    "code": "MY-09",
+    "postal_code": "01000-02800",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Perlis",
+        "name_en": "Perlis",
+        "code": "MY-09-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kangar",
+            "name_en": "Kangar City",
+            "code": "MY-09-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Arau",
+            "name_en": "Arau Royal Town",
+            "code": "MY-09-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Padang Besar",
+            "name_en": "Padang Besar",
+            "code": "MY-09-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Perlis",
+            "name_en": "Kuala Perlis",
+            "code": "MY-09-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Simpang Empat",
+            "name_en": "Simpang Empat",
+            "code": "MY-09-01-05",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Selangor",
+    "name_en": "Selangor",
+    "code": "MY-10",
+    "postal_code": "40000-68100",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Petaling",
+        "name_en": "Petaling",
+        "code": "MY-10-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Petaling Jaya",
+            "name_en": "Petaling Jaya City",
+            "code": "MY-10-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Subang Jaya",
+            "name_en": "Subang Jaya City",
+            "code": "MY-10-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Shah Alam",
+            "name_en": "Shah Alam City",
+            "code": "MY-10-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Puchong",
+            "name_en": "Puchong",
+            "code": "MY-10-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Damansara",
+            "name_en": "Damansara",
+            "code": "MY-10-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Buloh",
+            "name_en": "Sungai Buloh",
+            "code": "MY-10-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Klang",
+        "name_en": "Klang",
+        "code": "MY-10-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Klang Bandar",
+            "name_en": "Klang Royal City",
+            "code": "MY-10-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Port Klang",
+            "name_en": "Port Klang",
+            "code": "MY-10-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kapar",
+            "name_en": "Kapar",
+            "code": "MY-10-02-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Meru",
+            "name_en": "Meru",
+            "code": "MY-10-02-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pandamaran",
+            "name_en": "Pandamaran",
+            "code": "MY-10-02-05",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Hulu Langat",
+        "name_en": "Hulu Langat",
+        "code": "MY-10-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kajang",
+            "name_en": "Kajang Town",
+            "code": "MY-10-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ampang",
+            "name_en": "Ampang Jaya",
+            "code": "MY-10-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Cheras",
+            "name_en": "Cheras Selatan",
+            "code": "MY-10-03-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bangi",
+            "name_en": "Bandar Baru Bangi",
+            "code": "MY-10-03-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Semenyih",
+            "name_en": "Semenyih",
+            "code": "MY-10-03-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Hulu Langat Town",
+            "name_en": "Hulu Langat Town",
+            "code": "MY-10-03-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Gombak",
+        "name_en": "Gombak",
+        "code": "MY-10-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Rawang",
+            "name_en": "Rawang",
+            "code": "MY-10-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Caves",
+            "name_en": "Batu Caves",
+            "code": "MY-10-04-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Selayang",
+            "name_en": "Selayang",
+            "code": "MY-10-04-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Setapak",
+            "name_en": "Setapak",
+            "code": "MY-10-04-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Langat",
+        "name_en": "Kuala Langat",
+        "code": "MY-10-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Banting",
+            "name_en": "Banting",
+            "code": "MY-10-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Teluk Panglima Garang",
+            "name_en": "Teluk Panglima Garang",
+            "code": "MY-10-05-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Morib",
+            "name_en": "Morib",
+            "code": "MY-10-05-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sepang",
+        "name_en": "Sepang",
+        "code": "MY-10-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Cyberjaya",
+            "name_en": "Cyberjaya",
+            "code": "MY-10-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "KLIA",
+            "name_en": "KLIA Area",
+            "code": "MY-10-06-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sepang Town",
+            "name_en": "Sepang Town",
+            "code": "MY-10-06-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Dengkil",
+            "name_en": "Dengkil",
+            "code": "MY-10-06-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Selangor",
+        "name_en": "Kuala Selangor",
+        "code": "MY-10-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kuala Selangor",
+            "name_en": "Kuala Selangor",
+            "code": "MY-10-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bestari Jaya",
+            "name_en": "Bestari Jaya",
+            "code": "MY-10-07-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Ijok",
+            "name_en": "Ijok",
+            "code": "MY-10-07-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Jeram",
+            "name_en": "Jeram",
+            "code": "MY-10-07-04",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Hulu Selangor",
+        "name_en": "Hulu Selangor",
+        "code": "MY-10-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Kubu Bharu",
+            "name_en": "Kuala Kubu Bharu",
+            "code": "MY-10-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batang Kali",
+            "name_en": "Batang Kali",
+            "code": "MY-10-08-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Serendah",
+            "name_en": "Serendah",
+            "code": "MY-10-08-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sabak Bernam",
+        "name_en": "Sabak Bernam",
+        "code": "MY-10-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Sabak Bernam",
+            "name_en": "Sabak Bernam",
+            "code": "MY-10-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "S Sungai Besar",
+            "name_en": "Sungai Besar",
+            "code": "MY-10-09-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Seksi Sekinchan",
+            "name_en": "Sekinchan",
+            "code": "MY-10-09-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Terengganu",
+    "name_en": "Terengganu",
+    "code": "MY-11",
+    "postal_code": "20000-24300",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kuala Terengganu",
+        "name_en": "Kuala Terengganu",
+        "code": "MY-11-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kuala Terengganu",
+            "name_en": "Kuala Terengganu City",
+            "code": "MY-11-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Buruk",
+            "name_en": "Batu Buruk",
+            "code": "MY-11-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Ibai",
+            "name_en": "Kuala Ibai",
+            "code": "MY-11-01-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kemaman",
+        "name_en": "Kemaman",
+        "code": "MY-11-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Chukai",
+            "name_en": "Chukai",
+            "code": "MY-11-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kerteh",
+            "name_en": "Kerteh",
+            "code": "MY-11-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kijal",
+            "name_en": "Kijal",
+            "code": "MY-11-02-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Dungun",
+        "name_en": "Dungun",
+        "code": "MY-11-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Dungun",
+            "name_en": "Kuala Dungun",
+            "code": "MY-11-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Paka",
+            "name_en": "Paka",
+            "code": "MY-11-03-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Besut",
+        "name_en": "Besut",
+        "code": "MY-11-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Jertih",
+            "name_en": "Jertih",
+            "code": "MY-11-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuala Besut",
+            "name_en": "Kuala Besut",
+            "code": "MY-11-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Marang",
+        "name_en": "Marang",
+        "code": "MY-11-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Marang",
+            "name_en": "Marang Town",
+            "code": "MY-11-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Payung",
+            "name_en": "Bukit Payung",
+            "code": "MY-11-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Hulu Terengganu",
+        "name_en": "Hulu Terengganu",
+        "code": "MY-11-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuala Berang",
+            "name_en": "Kuala Berang",
+            "code": "MY-11-06-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Setiu",
+        "name_en": "Setiu",
+        "code": "MY-11-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Permaisuri",
+            "name_en": "Bandar Permaisuri",
+            "code": "MY-11-07-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kuala Nerus",
+        "name_en": "Kuala Nerus",
+        "code": "MY-11-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Gong Badak",
+            "name_en": "Gong Badak",
+            "code": "MY-11-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Rakit",
+            "name_en": "Batu Rakit",
+            "code": "MY-11-08-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sabah",
+    "name_en": "Sabah",
+    "code": "MY-12",
+    "postal_code": "88000-91309",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kota Kinabalu",
+        "name_en": "Kota Kinabalu",
+        "code": "MY-12-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kota Kinabalu Bandar",
+            "name_en": "Kota Kinabalu City",
+            "code": "MY-12-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Likas",
+            "name_en": "Likas",
+            "code": "MY-12-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Inanam",
+            "name_en": "Inanam",
+            "code": "MY-12-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Menggatal",
+            "name_en": "Menggatal",
+            "code": "MY-12-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Aru",
+            "name_en": "Tanjung Aru",
+            "code": "MY-12-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Layan",
+            "name_en": "Layan",
+            "code": "MY-12-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sandakan",
+        "name_en": "Sandakan",
+        "code": "MY-12-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Sandakan",
+            "name_en": "Sandakan Town",
+            "code": "MY-12-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Sapi",
+            "name_en": "Batu Sapi",
+            "code": "MY-12-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Elora",
+            "name_en": "Elora",
+            "code": "MY-12-02-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Tawau",
+        "name_en": "Tawau",
+        "code": "MY-12-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Tawau",
+            "name_en": "Tawau Town",
+            "code": "MY-12-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Merotai",
+            "name_en": "Merotai",
+            "code": "MY-12-03-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Balung",
+            "name_en": "Balung",
+            "code": "MY-12-03-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Penampang",
+        "name_en": "Penampang",
+        "code": "MY-12-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Donggongon",
+            "name_en": "Donggongon",
+            "code": "MY-12-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Putatan",
+            "name_en": "Putatan",
+            "code": "MY-12-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Keningau",
+        "name_en": "Keningau",
+        "code": "MY-12-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Keningau",
+            "name_en": "Keningau Town",
+            "code": "MY-12-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bingkor",
+            "name_en": "Bingkor",
+            "code": "MY-12-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Lahad Datu",
+        "name_en": "Lahad Datu",
+        "code": "MY-12-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Lahad Datu",
+            "name_en": "Lahad Datu Town",
+            "code": "MY-12-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Silabukan",
+            "name_en": "Silabukan",
+            "code": "MY-12-06-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Semporna",
+        "name_en": "Semporna",
+        "code": "MY-12-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Semporna",
+            "name_en": "Semporna Town",
+            "code": "MY-12-07-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bum Bum",
+            "name_en": "Bum Bum Island",
+            "code": "MY-12-07-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Tuaran",
+        "name_en": "Tuaran",
+        "code": "MY-12-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Tuaran",
+            "name_en": "Tuaran Town",
+            "code": "MY-12-08-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tamparuli",
+            "name_en": "Tamparuli",
+            "code": "MY-12-08-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Papar",
+        "name_en": "Papar",
+        "code": "MY-12-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Papar",
+            "name_en": "Papar Town",
+            "code": "MY-12-09-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kinarut",
+            "name_en": "Kinarut",
+            "code": "MY-12-09-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kudat",
+        "name_en": "Kudat",
+        "code": "MY-12-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kudat",
+            "name_en": "Kudat Town",
+            "code": "MY-12-10-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Ranau",
+        "name_en": "Ranau",
+        "code": "MY-12-11",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Ranau",
+            "name_en": "Ranau Town",
+            "code": "MY-12-11-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kundasang",
+            "name_en": "Kundasang",
+            "code": "MY-12-11-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kota Belud",
+        "name_en": "Kota Belud",
+        "code": "MY-12-12",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kota Belud",
+            "name_en": "Kota Belud Town",
+            "code": "MY-12-12-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sarawak",
+    "name_en": "Sarawak",
+    "code": "MY-13",
+    "postal_code": "93000-98859",
+    "division_type": "state",
+    "counties": [
+      {
+        "name": "Kuching",
+        "name_en": "Kuching",
+        "code": "MY-13-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kuching City North",
+            "name_en": "Kuching North",
+            "code": "MY-13-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kuching City South",
+            "name_en": "Kuching South",
+            "code": "MY-13-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Padungan",
+            "name_en": "Padungan",
+            "code": "MY-13-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Petra Jaya",
+            "name_en": "Petra Jaya",
+            "code": "MY-13-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu Kawa",
+            "name_en": "Batu Kawa",
+            "code": "MY-13-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Stampin",
+            "name_en": "Stampin",
+            "code": "MY-13-01-06",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Miri",
+        "name_en": "Miri",
+        "code": "MY-13-02",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Miri Bandar",
+            "name_en": "Miri City",
+            "code": "MY-13-02-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lutong",
+            "name_en": "Lutong",
+            "code": "MY-13-02-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Piasau",
+            "name_en": "Piasau",
+            "code": "MY-13-02-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sibu",
+        "name_en": "Sibu",
+        "code": "MY-13-03",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Sibu",
+            "name_en": "Sibu Town",
+            "code": "MY-13-03-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Sungai Bidut",
+            "name_en": "Sungai Bidut",
+            "code": "MY-13-03-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Bintulu",
+        "name_en": "Bintulu",
+        "code": "MY-13-04",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Bintulu",
+            "name_en": "Bintulu Town",
+            "code": "MY-13-04-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tanjung Kidurong",
+            "name_en": "Tanjung Kidurong",
+            "code": "MY-13-04-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Samarahan",
+        "name_en": "Samarahan",
+        "code": "MY-13-05",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Kota Samarahan",
+            "name_en": "Kota Samarahan",
+            "code": "MY-13-05-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Asajaya",
+            "name_en": "Asajaya",
+            "code": "MY-13-05-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Serian",
+        "name_en": "Serian",
+        "code": "MY-13-06",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Serian",
+            "name_en": "Serian Town",
+            "code": "MY-13-06-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Tebedu",
+            "name_en": "Tebedu",
+            "code": "MY-13-06-02",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Limbang",
+        "name_en": "Limbang",
+        "code": "MY-13-07",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Limbang",
+            "name_en": "Limbang Town",
+            "code": "MY-13-07-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sarikei",
+        "name_en": "Sarikei",
+        "code": "MY-13-08",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Sarikei",
+            "name_en": "Sarikei Town",
+            "code": "MY-13-08-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Sri Aman",
+        "name_en": "Sri Aman",
+        "code": "MY-13-09",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Sri Aman",
+            "name_en": "Sri Aman Town",
+            "code": "MY-13-09-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Kapit",
+        "name_en": "Kapit",
+        "code": "MY-13-10",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Kapit",
+            "name_en": "Kapit Town",
+            "code": "MY-13-10-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Mukah",
+        "name_en": "Mukah",
+        "code": "MY-13-11",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Mukah",
+            "name_en": "Mukah Town",
+            "code": "MY-13-11-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      },
+      {
+        "name": "Betong",
+        "name_en": "Betong",
+        "code": "MY-13-12",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Bandar Betong",
+            "name_en": "Betong Town",
+            "code": "MY-13-12-01",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kuala Lumpur",
+    "name_en": "Kuala Lumpur",
+    "code": "MY-14",
+    "postal_code": "50000-60000",
+    "division_type": "federal_territory",
+    "counties": [
+      {
+        "name": "Kuala Lumpur",
+        "name_en": "Kuala Lumpur",
+        "code": "MY-14-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "KLCC",
+            "name_en": "KLCC",
+            "code": "MY-14-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bukit Bintang",
+            "name_en": "Bukit Bintang",
+            "code": "MY-14-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Chow Kit",
+            "name_en": "Chow Kit",
+            "code": "MY-14-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bangsar",
+            "name_en": "Bangsar",
+            "code": "MY-14-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Mont Kiara",
+            "name_en": "Mont Kiara",
+            "code": "MY-14-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Cheras KL",
+            "name_en": "Cheras KL",
+            "code": "MY-14-01-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Kepong",
+            "name_en": "Kepong",
+            "code": "MY-14-01-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Setapak",
+            "name_en": "Setapak",
+            "code": "MY-14-01-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Wangsa Maju",
+            "name_en": "Wangsa Maju",
+            "code": "MY-14-01-09",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Seputeh",
+            "name_en": "Seputeh",
+            "code": "MY-14-01-10",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Bandar Tun Razak",
+            "name_en": "Bandar Tun Razak",
+            "code": "MY-14-01-11",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lembah Pantai",
+            "name_en": "Lembah Pantai",
+            "code": "MY-14-01-12",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Batu",
+            "name_en": "Batu",
+            "code": "MY-14-01-13",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Segambut",
+            "name_en": "Segambut",
+            "code": "MY-14-01-14",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Labuan",
+    "name_en": "Labuan",
+    "code": "MY-15",
+    "postal_code": "87000-87033",
+    "division_type": "federal_territory",
+    "counties": [
+      {
+        "name": "Labuan",
+        "name_en": "Labuan",
+        "code": "MY-15-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Victoria",
+            "name_en": "Victoria (Bandar Labuan)",
+            "code": "MY-15-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Lajau",
+            "name_en": "Lajau",
+            "code": "MY-15-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Pohun Batu",
+            "name_en": "Pohun Batu",
+            "code": "MY-15-01-03",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Putrajaya",
+    "name_en": "Putrajaya",
+    "code": "MY-16",
+    "postal_code": "62000-62999",
+    "division_type": "federal_territory",
+    "counties": [
+      {
+        "name": "Putrajaya",
+        "name_en": "Putrajaya",
+        "code": "MY-16-01",
+        "division_type": "district",
+        "wards": [
+          {
+            "name": "Presint 1",
+            "name_en": "Precinct 1",
+            "code": "MY-16-01-01",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 2",
+            "name_en": "Precinct 2",
+            "code": "MY-16-01-02",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 3",
+            "name_en": "Precinct 3",
+            "code": "MY-16-01-03",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 4",
+            "name_en": "Precinct 4",
+            "code": "MY-16-01-04",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 5",
+            "name_en": "Precinct 5",
+            "code": "MY-16-01-05",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 8",
+            "name_en": "Precinct 8",
+            "code": "MY-16-01-06",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 9",
+            "name_en": "Precinct 9",
+            "code": "MY-16-01-07",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 11",
+            "name_en": "Precinct 11",
+            "code": "MY-16-01-08",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 14",
+            "name_en": "Precinct 14",
+            "code": "MY-16-01-09",
+            "division_type": "mukim_town"
+          },
+          {
+            "name": "Presint 15",
+            "name_en": "Precinct 15",
+            "code": "MY-16-01-10",
+            "division_type": "mukim_town"
+          }
+        ]
+      }
+    ]
+  }
+]

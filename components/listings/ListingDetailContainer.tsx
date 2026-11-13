@@ -7,10 +7,23 @@ import { getTemplateByCategoryId } from '@/lib/cache/categories';
 // Map categoryId hoặc category slug với Component tương ứng
 // const TEMPLATE_REGISTRY: Record<string, React.ComponentType<{ listing: Listing }>> = {
 const TEMPLATE_REGISTRY: Record<string, React.ComponentType<{ listing: any }>> = {
+  //level 1
   'base': DefaultTemplate,
   'real-estate': RealEstateTemplate,
   'vehicles': VehicleTemplate,
-  // Thêm các category khác vào đây...
+  'electronics': DefaultTemplate,
+  'jobs': DefaultTemplate,
+  'home-services': DefaultTemplate,
+  'pets': DefaultTemplate,
+  'food': DefaultTemplate,
+  'appliances': DefaultTemplate,
+  'home-garden': DefaultTemplate,
+  'baby-kids': DefaultTemplate,
+  'fashion': DefaultTemplate,
+  'hobbies': DefaultTemplate,
+  'tools': DefaultTemplate,
+  'services': DefaultTemplate,
+  //level 2
 };
 
 export async function ListingDetailContainer({ listing }: { listing: Listing }) {

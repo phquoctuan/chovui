@@ -6,13 +6,13 @@ import type {
   ListingResult,
 } from "@/data/listings";
 
-import type { ListingCreateInput } from "@/lib/validations/listing/listing-create-schema.js";
-import type { ListingUpdateInput } from "@/lib/validations/listing/listing-update-schema.js";
+import type { ListingCreateInput, ListingUpdateInput } from "@/lib/validations/listing/listing-base-schema";
+// import type { ListingUpdateInput } from "@/lib/validations/listing/listing-update-schema.js";
 import { ListingRepository } from "@/lib/repositories/listing-repository";
-import { getCreateListingSchema } from '@/lib/validations/listing/listing-schema';
+import { getCreateListingSchema } from '@/lib/validations/listing/listing-templates-schema';
 import { db } from '@/db';
 import { listings } from '@/db/schema';
-import { listingQuerySchema } from "@/lib/validations/listing/listing-schema.js";
+import { listingQuerySchema } from "@/lib/validations/listing/listing-query-schema";
 
 export class ListingService {
   private static repository = new ListingRepository();
@@ -74,8 +74,8 @@ export class ListingService {
       location: validatedData.location,
       attributes: validatedData.attributes, // Lưu trực tiếp vào JSONB
       currencyCode: "đ",
-      countryId: 1,
-      region: "aa",
+      countryCode: "VN",
+      // region: "aa",
       slug:"3535353535353",
     });
 

@@ -1,10 +1,13 @@
 import type {
   SellerProfile,
+  SellerProfileWithCurrency,
   SellerProfileUpdateInput,
 } from "@/lib/repositories/seller-profile-repository";
 import type { SellerPhone } from "@/lib/repositories/seller-phone-repository";
-import type { SellerAddress } from "@/lib/repositories/seller-address-repository";
+// import type { SellerAddress } from "@/lib/repositories/seller-address-repository";
+import type {SellerAddress, } from "@/db/schema";
 import type { SellerContactMethod } from "@/lib/repositories/seller-contact-method-repository";
+import { SellerAddressInput } from "@/lib/validations/user/account-contact";
 import {apiRequest} from "./api_request";
 
 export type SellerReadiness = {
@@ -34,14 +37,22 @@ export function getAccountProfile() {
   return apiRequest<AccountProfileResponse>("/api/account/profile");
 }
 
-export function updateAccountProfile(data: SellerProfileUpdateInput) {
-  return apiRequest<SellerProfile>("/api/account/profile", {
+export function getSellerProfile() {
+  return apiRequest<SellerProfileWithCurrency>("/api/account/seller-profile");
+}
+
+export function getSellerAddresses() {
+  return apiRequest<SellerAddress[]>("/api/account/seller-address");
+}
+
+export function updateSellerProfile(data: SellerProfileUpdateInput) {
+  return apiRequest<SellerProfile>("/api/account/seller-profile", {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 }
-
+/////////////////////////PHONE
 export function createPhone(data: { phone: string; label: string }) {
   return apiRequest<SellerPhone>("/api/account/phones", {
     method: "POST",
@@ -85,9 +96,9 @@ export function confirmPhoneVerification(id: string, code: string) {
     body: JSON.stringify({ action: "confirm", code }),
   });
 }
-
+//////////////////////////ADDRESS
 export function createAddress(
-  data: Omit<SellerAddress, "id" | "userId" | "createdAt" | "updatedAt">,
+  data: SellerAddressInput,
 ) {
   return apiRequest<SellerAddress>("/api/account/addresses", {
     method: "POST",
@@ -98,7 +109,7 @@ export function createAddress(
 
 export function updateAddress(
   id: string,
-  data: Omit<SellerAddress, "id" | "userId" | "createdAt" | "updatedAt">,
+  data: SellerAddressInput,
 ) {
   return apiRequest<SellerAddress>(`/api/account/addresses/${id}`, {
     method: "PATCH",

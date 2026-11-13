@@ -8,9 +8,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { getListing, updateListing } from "@/lib/api/listings";
 import {
-  listingUpdateSchema,
+  baseListingSchema,
   type ListingUpdateInput,
-} from "@/lib/validations/listing/listing-update-schema.js";
+} from "@/lib/validations/listing/listing-base-schema";
 import {
   Card,
   CardHeader,
@@ -37,14 +37,11 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
   const queryClient = useQueryClient();
 
   const form = useForm<ListingUpdateInput>({
-    resolver: zodResolver(listingUpdateSchema),
+    resolver: zodResolver(baseListingSchema as any),
     defaultValues: {
       title: "",
       description: "",
-      price: 0,
-      country: "",
-      category: "",
-      location: "",
+      price: "0",
     },
   });
 
@@ -57,8 +54,8 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
       title: listing.title,
       description: listing.description ?? "",
       price: listing.price,
-      country: listing.country,
-      category: listing.category,
+      countryCode: listing.countryCode,
+      categoryId: listing.categoryId,
       location: listing.location,
     });
   }, [listing, form]);
@@ -182,12 +179,12 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
             </label>
             <input
               id="country"
-              {...form.register("country")}
+              {...form.register("countryCode")}
               className="w-full rounded-md border px-3 py-2"
             />
-            {form.formState.errors.country && (
+            {form.formState.errors.countryCode && (
               <p className="text-sm text-destructive">
-                {form.formState.errors.country.message}
+                {form.formState.errors.countryCode.message}
               </p>
             )}
           </div>
@@ -199,12 +196,12 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
             </label>
             <input
               id="category"
-              {...form.register("category")}
+              {...form.register("categoryId")}
               className="w-full rounded-md border px-3 py-2"
             />
-            {form.formState.errors.category && (
+            {form.formState.errors.categoryId && (
               <p className="text-sm text-destructive">
-                {form.formState.errors.category.message}
+                {form.formState.errors.categoryId.message}
               </p>
             )}
           </div>

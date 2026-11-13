@@ -10,33 +10,23 @@ import {
 import { Link } from "@/i18n/navigation";
 
 import { CreateListingForm } from "@/components/forms/create-listing-form";
+import { PageBreadcrumbs } from "@/components/common/page-breadcrumb";
 
 export default function CreateListingPage() {
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
+    <main className="flex-1 container mx-auto px-4 py-4 pb-28"> {/* Thêm pb-28 để tránh nội dung bị nút sticky che mất ở cuối trang */}
       {/* Breadcrumb */}
-      <Breadcrumb className="mb-6">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink
-              render={<Link href="/listings" />}
-            >
-              Tin đã đăng
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbPage>
-              Đăng tin
-            </BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      {/* Form */}
-      <CreateListingForm />
-    </div>
+      <PageBreadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Tin đã đăng", href: "/listings" },
+          { label: "Đăng tin", href: null },
+        ]}
+      />
+      {/* Form: Bỏ max-w-4xl và px-4 để chiếm toàn bộ bề ngang màn hình */}
+      <div className="w-full max-w-4xl py-4 mx-auto">
+        <CreateListingForm />
+      </div>
+    </main>
   );
 }

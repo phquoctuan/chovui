@@ -1135,7 +1135,8 @@ export const countrySeed: Array<NewCountry> = [
     "currencyCode": "USD",
     "currencySymbol": "$",
     "isActive": true,
-    "sortOrder": 81
+    "sortOrder": 81,
+    "hasRegion": true
   },
   {
     "code": "HN",
@@ -3235,7 +3236,8 @@ export const countrySeed: Array<NewCountry> = [
     "currencyCode": "VND",
     "currencySymbol": "₫",
     "isActive": true,
-    "sortOrder": 231
+    "sortOrder": 231,
+    "hasRegion": true
   },
   {
     "code": "GB",

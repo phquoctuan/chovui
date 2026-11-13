@@ -4,11 +4,11 @@ import { z } from "zod";
 import {
   type ListingQuery,
 } from "@/data/listings";
-import { listingQuerySchema } from "@/lib/validations/listing/listing-schema";
+import { listingQuerySchema } from "@/lib/validations/listing/listing-query-schema";
 import { ListingService } from "@/lib/services/listing-service";
 import { requireSession } from "@/lib/auth-session";
 import { handleApiError } from "@/lib/errors/handle-api-error";
-import { listingCreateSchema } from "@/lib/validations/listing/listing-create-schema";
+import { baseListingSchema } from "@/lib/validations/listing/listing-base-schema";
 import { assertSellerCanCreateListing } from "@/lib/services/seller-readiness-service";
 //// Server API layer
 // API Route
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const validationResult =
-      listingCreateSchema.safeParse(body);
+      baseListingSchema.safeParse(body);
 
     if (!validationResult.success) {
       return NextResponse.json(

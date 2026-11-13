@@ -17,10 +17,11 @@ import type {
 
 
 import type { Listing } from "@/db/schema";
-// import type { Listing } from "@/lib/repositories/listing-repository";
-import type { ListingCreateInput } from "@/lib/validations/listing/listing-create-schema.js";
-import type { ListingUpdateInput } from "@/lib/validations/listing/listing-update-schema.js";
+// // import type { Listing } from "@/lib/repositories/listing-repository";
+// import type { ListingCreateInput } from "@/lib/validations/listing/listing-create-schema.js";
+// import type { ListingUpdateInput } from "@/lib/validations/listing/listing-update-schema.js";
 import type { ListingImage } from "@/lib/repositories/listing-image-repository";
+import type { ListingUpdateInput, ListingCreateInput } from "@/lib/validations/listing/listing-base-schema";
 
 export type ListingsApiResponse = {
   data: Listing[];

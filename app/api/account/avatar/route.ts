@@ -18,10 +18,9 @@ import { avatarsPath, avatarsImageStorage } from "@/lib/storage";
 export async function POST(request: Request) {
   try {
     const session = await requireSession();
-
-    if (!session) {
-      return NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 });
-    }
+    // if (!session) {
+    //   return NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 });
+    // }
 
     const formData = await request.formData();
     const file = formData.get("file");

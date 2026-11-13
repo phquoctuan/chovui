@@ -1,5 +1,4 @@
 import "dotenv/config";
-
 import { db } from "../db";
 import { listings } from "../db/schema";
 

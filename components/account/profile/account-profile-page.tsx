@@ -13,7 +13,7 @@ import { resizeImage } from "@/lib/image/resize-image";
 import {
   deleteAccountAvatar,
   uploadAccountAvatar,
-  updateAccountProfile,
+  updateSellerProfile,
   createPhone,
   updatePhone,
   deletePhone,
@@ -27,6 +27,8 @@ import {
   updateContactMethod,
   deleteContactMethod,
 } from "@/lib/api/account";
+
+import type {SellerAddressInput} from "@/lib/validations/user/account-contact"
 import type { SellerProfileUpdateInput } from "@/lib/repositories/seller-profile-repository";
 
 import { ProfileReadinessCard } from "./profile-readiness-card";
@@ -45,22 +47,25 @@ import {
   PhoneDialog,
 } from "./profile-dialogs";
 import type {
-  AddressFormValues,
+  // AddressFormValues,
   ContactMethodFormValues,
   PersonalInfoFormValues,
   PhoneFormValues,
-} from "./profile-schemas";
+} from "@/lib/validations/user/seller-profile";
 import type {
-  DemoAddress,
+  // DemoAddress,
   DemoContactMethod,
   DemoPhone,
 } from "./profile-types";
+
+// import { SellerAddressSchemaValidated } from "@/lib/validations/user/account-contact";
+import type {SellerAddress} from "@/db/schema";
 
 type ActiveDialog = "personal" | "phone" | "address" | "contact" | null;
 
 type DeleteTarget =
   | { type: "phone"; item: DemoPhone }
-  | { type: "address"; item: DemoAddress }
+  | { type: "address"; item: SellerAddress }
   | { type: "contact"; item: DemoContactMethod }
   | null;
 
@@ -70,7 +75,7 @@ export function AccountProfilePage() {
 
   const [activeDialog, setActiveDialog] = useState<ActiveDialog>(null);
   const [editingPhone, setEditingPhone] = useState<DemoPhone | null>(null);
-  const [editingAddress, setEditingAddress] = useState<DemoAddress | null>(
+  const [editingAddress, setEditingAddress] = useState<SellerAddress | null>(
     null,
   );
   const [editingContact, setEditingContact] =
@@ -116,7 +121,7 @@ export function AccountProfilePage() {
         };
       }
 
-      return updateAccountProfile(nextInput);
+      return updateSellerProfile(nextInput);
     },
 
     onSuccess: async () => {
@@ -158,7 +163,7 @@ export function AccountProfilePage() {
   });
 
   const addressMutation = useMutation({
-    mutationFn: (input: { id?: string; values: AddressFormValues }) =>
+    mutationFn: (input: { id?: string; values: SellerAddressInput }) =>
       input.id
         ? updateAddress(input.id, input.values)
         : createAddress(input.values),
@@ -217,7 +222,8 @@ export function AccountProfilePage() {
       fullName: data?.profile?.fullName ?? data?.user.name ?? "",
       avatarUrl: data?.profile?.avatarUrl ?? "",
       nationalityCode: data?.profile?.nationalityCode ?? "",
-      defaultCountryCode: data?.profile?.defaultCountryCode ?? "VN",
+      defaultCountryCode: data?.profile?.defaultCountryCode ?? "",
+      defaultCurrencyCode: data?.profile?.defaultCurrencyCode ?? ""
     }),
     [data],
   );
@@ -227,6 +233,7 @@ export function AccountProfilePage() {
       <div className="mx-auto max-w-5xl space-y-4 p-4 sm:p-6">
         <div className="h-8 w-64 animate-pulse rounded bg-muted" />
         <div className="h-40 animate-pulse rounded-xl bg-muted" />
+        <div className="h-56 animate-pulse rounded-xl bg-muted" />
         <div className="h-56 animate-pulse rounded-xl bg-muted" />
       </div>
     );
@@ -281,7 +288,7 @@ export function AccountProfilePage() {
     phoneMutation.mutate({ id: editingPhone?.id, values });
   }
 
-  function saveAddress(values: AddressFormValues) {
+  function saveAddress(values: SellerAddressInput) {
     addressMutation.mutate({ id: editingAddress?.id, values });
   }
 
@@ -457,6 +464,7 @@ export function AccountProfilePage() {
         onOpenChange={(open) => setActiveDialog(open ? "phone" : null)}
         initialPhone={editingPhone}
         onSave={savePhone}
+        saving={phoneMutation.isPending}
       />
 
       <AddressDialog
@@ -465,6 +473,7 @@ export function AccountProfilePage() {
         initialAddress={editingAddress}
         defaultCountryCode={personalValues.defaultCountryCode}
         onSave={saveAddress}
+        saving={addressMutation.isPending}
       />
 
       <ContactMethodDialog
@@ -481,12 +490,12 @@ export function AccountProfilePage() {
         }}
         title={
           deleteTarget?.type === "phone"
-            ? "Xóa số điện thoại?"
+            ? "Xóa số điện thoại"
             : deleteTarget?.type === "address"
-              ? "Xóa địa chỉ?"
-              : "Xóa kênh liên hệ?"
+              ? "Xóa địa chỉ"
+              : "Xóa kênh liên hệ"
         }
-        description="Thao tác này sẽ xóa dữ liệu khỏi cơ sở dữ liệu."
+        description="Bạn có chắc chắn xóa ?"
         onConfirm={confirmDelete}
       />
     </main>

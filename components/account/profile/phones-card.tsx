@@ -106,7 +106,7 @@ export function PhonesCard({
         ))}
 
         <p className="text-xs text-muted-foreground">
-          Số điện thoại được lưu trong cơ sở dữ liệu. Xác thực sẽ yêu cầu OTP.
+          Xác thực sẽ yêu cầu OTP.
         </p>
       </CardContent>
     </Card>

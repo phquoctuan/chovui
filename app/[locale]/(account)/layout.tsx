@@ -20,7 +20,7 @@ export default async function AccountLayout({
         <Header />
         {children}
         {/* Footer [Hỗ trợ khách hàng, Về Chợ Tốt, Liên kết] */}
-        <Footer />
+        {/* <Footer /> */}
     </div>
   );
 }

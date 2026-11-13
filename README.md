@@ -56,6 +56,23 @@ git add .
 git commit -m "Mô tả ngắn gọn về thay đổi của bạn"
 git push origin main
 
-## Seed data
-pnpm exec tsx scripts/seed-listings.ts 
-pnpm db:seed:countries
+## Seed data :   pnpm db:seed:countries
+<!-- pnpm exec tsx scripts/seed-listings.ts  -->
+<!-- pnpm exec tsx scripts/generate-jp.ts -->
+pnpm exec tsx scripts/seed-currencies.ts 
+pnpm exec tsx scripts/seed-categories.ts 
+pnpm exec tsx scripts/seed-countries.ts
+pnpm exec tsx scripts/seed-vn-gov.ts 
+pnpm exec tsx scripts/seed-regions_us.ts
+pnpm exec tsx scripts/seed-counties_us.ts
+pnpm exec tsx scripts/seed-gov-cn.ts
+pnpm exec tsx scripts/seed-gov-jp.ts
+pnpm exec tsx scripts/seed-gov-kr.ts
+pnpm exec tsx scripts/seed-gov-my.ts
+pnpm exec tsx scripts/seed-gov-id.ts
+pnpm exec tsx scripts/seed-gov-ng.ts
+pnpm exec tsx scripts/seed-gov-in.ts
+
+<!-- pnpm exec tsx scripts/seed-regions.ts
+pnpm exec tsx scripts/seed-counties_vn.ts
+ -->

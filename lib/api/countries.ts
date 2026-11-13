@@ -28,3 +28,21 @@ export async function getCountries(): Promise<Country[]> {
 
   return result.data;
 }
+
+export async function getCountryNameByCode(code: string | undefined): Promise<String> {
+  if(code){
+      const response = await fetch(`/api/countries/${code}`, {
+        method: "GET",
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result?.error ?? "Không tìm thấy quốc gia.");
+      }
+      return result.data.nativeName;
+  }
+  else{
+    return "";
+  }
+  
+}

@@ -1,0 +1,1 @@
+ALTER TABLE "currencies" ADD COLUMN "icon_url" text;

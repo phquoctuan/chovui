@@ -1,14 +1,10 @@
 import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { sellerAddresses } from "@/db/schema";
-
-export type SellerAddress = typeof sellerAddresses.$inferSelect;
-export type SellerAddressInput = Omit<
-  typeof sellerAddresses.$inferInsert,
-  "id" | "userId" | "createdAt" | "updatedAt"
->;
+import type { SellerAddressValidated, SellerAddressInput } from "@/lib/validations/user/account-contact";
 
 export const SellerAddressRepository = {
+  ///findByUserId-----
   async findByUserId(userId: string) {
     return db
       .select()
@@ -20,12 +16,10 @@ export const SellerAddressRepository = {
     const [row] = await db
       .select()
       .from(sellerAddresses)
-      .where(
-        and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)),
-      );
+      .where(and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)));
     return row ?? null;
   },
-  async create(userId: string, data: SellerAddressInput) {
+  async create(userId: string, data: SellerAddressValidated) {
     return db.transaction(async (tx) => {
       const existing = await tx
         .select({ id: sellerAddresses.id })
@@ -44,14 +38,13 @@ export const SellerAddressRepository = {
       return row;
     });
   },
-  async update(userId: string, id: string, data: SellerAddressInput) {
+  ///update-----
+  async update(userId: string, id: string, data: SellerAddressValidated) {
     return db.transaction(async (tx) => {
       const existing = await tx
         .select()
         .from(sellerAddresses)
-        .where(
-          and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)),
-        );
+        .where(and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)));
       if (!existing[0]) return null;
       if (data.primary)
         await tx
@@ -61,20 +54,17 @@ export const SellerAddressRepository = {
       const [row] = await tx
         .update(sellerAddresses)
         .set({ ...data, updatedAt: new Date() })
-        .where(
-          and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)),
-        )
+        .where(and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)))
         .returning();
       return row ?? null;
     });
   },
+  ///delete-----
   async delete(userId: string, id: string) {
     return db.transaction(async (tx) => {
       const [deleted] = await tx
         .delete(sellerAddresses)
-        .where(
-          and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)),
-        )
+        .where(and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)))
         .returning();
       if (!deleted) return null;
       if (deleted.primary) {
@@ -98,9 +88,7 @@ export const SellerAddressRepository = {
       const existing = await tx
         .select({ id: sellerAddresses.id })
         .from(sellerAddresses)
-        .where(
-          and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)),
-        );
+        .where(and(eq(sellerAddresses.userId, userId), eq(sellerAddresses.id, id)));
       if (!existing[0]) return null;
       await tx
         .update(sellerAddresses)

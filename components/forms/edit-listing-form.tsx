@@ -16,9 +16,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { getListing, updateListing } from "@/lib/api/listings";
 import {
-  listingUpdateSchema,
+  baseListingSchema,
   type ListingUpdateInput,
-} from "@/lib/validations/listing/listing-update-schema";
+} from "@/lib/validations/listing/listing-base-schema";
 import {
   Card,
   CardHeader,
@@ -47,14 +47,11 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
   });
 
   const form = useForm<ListingUpdateInput>({
-    resolver: zodResolver(listingUpdateSchema),
+    resolver: zodResolver(baseListingSchema  as any),
     defaultValues: {
       title: "",
       description: "",
-      price: 0,
-      country: "",
-      category: "",
-      location: "",
+      price: "0",
     },
   });
 
@@ -66,8 +63,8 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
         title: listing.title,
         description: listing.description ?? "",
         price: listing.price,
-        country: listing.country,
-        category: listing.category,
+        countryCode: listing.countryCode,
+        categoryId: listing.categoryId,
         location: listing.location,
       });
     }
@@ -170,28 +167,28 @@ export function EditListingForm({ listingId }: EditListingFormProps) {
               </Field>
 
               {/* Quốc gia */}
-              <Field data-invalid={!!form.formState.errors.country}>
+              <Field data-invalid={!!form.formState.errors.countryCode}>
                 <FieldLabel htmlFor="country">Quốc gia</FieldLabel>
                 <Input
                   id="country"
                   disabled={isSubmitting}
-                  {...form.register("country")}
+                  {...form.register("countryCode")}
                 />
                 <FieldError>
-                  {form.formState.errors.country?.message}
+                  {form.formState.errors.countryCode?.message}
                 </FieldError>
               </Field>
 
               {/* Danh mục */}
-              <Field data-invalid={!!form.formState.errors.category}>
+              <Field data-invalid={!!form.formState.errors.categoryId}>
                 <FieldLabel htmlFor="category">Danh mục</FieldLabel>
                 <Input
                   id="category"
                   disabled={isSubmitting}
-                  {...form.register("category")}
+                  {...form.register("categoryId")}
                 />
                 <FieldError>
-                  {form.formState.errors.category?.message}
+                  {form.formState.errors.categoryId?.message}
                 </FieldError>
               </Field>
 

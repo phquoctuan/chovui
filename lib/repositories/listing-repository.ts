@@ -5,8 +5,8 @@ import { db } from "@/db";
 import { listings } from "@/db/schema/listings";
 import type { Listing } from "@/db/schema";
 import type { ListingQuery, ListingResult } from "@/data/listings";
-import type { ListingCreateInput } from "@/lib/validations/listing/listing-create-schema.js";
-import type { ListingUpdateInput } from "@/lib/validations/listing/listing-update-schema.js";
+import type { ListingCreateInput } from "@/lib/validations/listing/listing-base-schema";
+import type { ListingUpdateInput } from "@/lib/validations/listing/listing-base-schema";
 
 export interface IListingRepository {
   findMany(query: ListingQuery): Promise<ListingResult>;
@@ -42,7 +42,7 @@ export class ListingRepository implements IListingRepository {
     }
 
     if (query.country) {
-      conditions.push(eq(listings.countryId, query.country));
+      conditions.push(eq(listings.countryCode, query.country.toString()));
     }
 
     if (query.category) {
@@ -106,11 +106,11 @@ export class ListingRepository implements IListingRepository {
       .values({
         userId,
         title: data.title,
-        categoryId: Number(data.category),
+        categoryId: data.categoryId,
         price: String(data.price),
         currencyCode: "đ",
-        countryId: 1,
-        region: "aa",
+        countryCode: "VN",
+        // region: "aa",
         slug:"3535353535353",
         description: data.description ?? null,
         location: data.location,
@@ -142,9 +142,9 @@ export class ListingRepository implements IListingRepository {
       .set({
         title: data.title,
         description: data.description ?? null,
-        price: data.price.toString(),
-        countryId: Number(data.country),
-        categoryId: Number(data.category),
+        price: data.price,
+        countryCode: data.countryCode,
+        categoryId: data.categoryId,
         location: data.location,
         updatedAt: new Date(),
       })

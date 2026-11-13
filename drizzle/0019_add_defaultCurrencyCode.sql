@@ -1,0 +1,1 @@
+ALTER TABLE "seller_profiles" ADD COLUMN "default_currency_code" text DEFAULT 'PI' NOT NULL;

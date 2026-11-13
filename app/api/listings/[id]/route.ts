@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth-session";
 import { handleApiError } from "@/lib/errors/handle-api-error";
 import { ListingService } from "@/lib/services/listing-service";
-import { listingUpdateSchema } from "@/lib/validations/listing/listing-update-schema";
+import { baseListingSchema } from "@/lib/validations/listing/listing-base-schema";
 
 type RouteContext = {
   params: Promise<{
@@ -21,7 +21,7 @@ export async function PATCH(
 
     const body = await request.json();
 
-    const validationResult = listingUpdateSchema.safeParse(body);
+    const validationResult = baseListingSchema.safeParse(body);
 
     if (!validationResult.success) {
       return NextResponse.json(

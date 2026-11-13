@@ -1,0 +1,1 @@
+ALTER TABLE "counties" ADD COLUMN "name_en" text;

@@ -41,5 +41,5 @@ export type PendingListingImage = {
    * Desired image order.
    * This value is sent to the API as sortOrder.
    */
-  order: number;
+  sortOrder: number;
 };

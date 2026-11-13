@@ -11,6 +11,7 @@ export type CategorySearchOptions = {
 
 export type CategoryTree = Awaited<ReturnType<typeof listCategories>>;
 
+//use for useCategories(local: string)
 export async function listCategories({
   activeOnly = true,
   locale = "vi",
@@ -20,7 +21,7 @@ export async function listCategories({
   if (activeOnly) {
     conditions.push(eq(categories.isActive, true));
   }
-
+  console.log("local:", locale)
   const allCategories = await db
     .select({
       id: categories.id,
@@ -28,6 +29,7 @@ export async function listCategories({
       slug: categories.slug,
       template: categories.template,
       sortOrder: categories.sortOrder,
+      orginalName: categories.name,
       name: categoryTranslations.name,
       translatedSlug: categoryTranslations.slug,
     })
@@ -45,7 +47,7 @@ export async function listCategories({
   // Chuẩn hóa tên và slug theo ngôn ngữ
   const formattedCategories = allCategories.map((cat) => ({
     ...cat,
-    name: cat.name || "Untitled",
+    name: cat.name || cat.orginalName,
     slug: cat.translatedSlug || cat.slug,
     originalslug: cat.slug,
   }));

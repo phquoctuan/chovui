@@ -7,10 +7,12 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { CountrySelect } from "@/components/uiexp/country-select";
+// import { Textarea } from "@/components/ui/textarea";
+// import { CountrySelect } from "@/components/uiexp/country-select";
+// import { CurrencySelect } from "@/components/uiexp/currency-select";
 import { CountryPhoneInput } from "@/components/uiexp/country-phone-input";
-import { CountryPhoneSelect } from "@/components/uiexp/country-phone-select";
+// import { CountryPhoneSelect } from "@/components/uiexp/country-phone-select";
+
 import {
   Field,
   FieldDescription,
@@ -20,24 +22,35 @@ import {
 } from "@/components/ui/field";
 
 import { ProfileFormDialog } from "./profile-form-dialog";
-import { COUNTRIES } from "./profile-demo-data";
+// import { COUNTRIES } from "./profile-demo-data";
 import type {
-  DemoAddress,
+  // DemoAddress,
   DemoContactMethod,
   DemoPhone,
 } from "./profile-types";
 import {
-  addressSchema,
+  // addressSchema,
   contactMethodSchema,
   personalInfoSchema,
   phoneSchema,
-  type AddressFormValues,
+  // type AddressFormValues,
   type ContactMethodFormValues,
   type PersonalInfoFormValues,
   type PhoneFormValues,
-} from "./profile-schemas";
+} from "@/lib/validations/user/seller-profile";
 import { ConsoleLogWriter } from "drizzle-orm";
-// import console from "console";
+import type { SellerAddress, NewSellerAddress } from "@/db/schema";
+import {SellerAddressValidate, type SellerAddressValidated,type SellerAddressInput} from "@/lib/validations/user/account-contact"
+import { XTextInput} from "@/components/xInput/XTextInput";
+import { XPhoneInput} from "@/components/xInput/xPhoneInput";
+import { XCountrySelect} from "@/components/xInput/XCountrySelect";
+import { XAddressInput } from "@/components/xInput/XAddressInput";
+import { XCurrencySelect } from "@/components/xInput/XCurrencySelect";
+import {useCountries} from "@/components/hooks/use-countries";
+import {useRegions, useRegionNameById} from "@/components/hooks/use-regions";
+import {useCounties, useCountyNameById} from "@/components/hooks/use-counties";
+import {useWards, useWardNameById} from "@/components/hooks/use-wards";
+import { AddressValue } from "@/lib/helpers/addressHelpers";
 
 type DialogBase = {
   open: boolean;
@@ -180,20 +193,6 @@ export function PersonalInfoDialog({
           className="space-y-5"
         >
         <FieldGroup>
-          <Field data-invalid={!!form.formState.errors.fullName}>
-            <FieldLabel htmlFor="fullName">Họ và tên *</FieldLabel>
-
-            <Input
-              id="fullName"
-              {...form.register("fullName")}
-              aria-invalid={!!form.formState.errors.fullName}
-            />
-
-            <FieldError>
-              {form.formState.errors.fullName?.message}
-            </FieldError>
-          </Field>
-
           {/* Avatar */}
           <Field>
             <FieldLabel>Ảnh đại diện</FieldLabel>
@@ -216,18 +215,6 @@ export function PersonalInfoDialog({
 
               <div className="flex flex-col gap-2">
                 <div className="flex flex-wrap gap-2">
-                  {/* <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => avatarInputRef.current?.click()}
-                  >
-                    <label
-                      htmlFor="avatarFile"
-                      className="cursor-pointer"
-                    >
-                      Chọn ảnh
-                    </label>
-                  </Button> */}
                   <Button
                     type="button"
                     variant="outline"
@@ -263,49 +250,69 @@ export function PersonalInfoDialog({
             </div>
           </Field>
 
-          <Field>
-            <FieldLabel htmlFor="nationalityCode">
-              Quốc tịch
-            </FieldLabel>
-            <CountrySelect
-              name="nationalityCode"
-              value={form.watch("nationalityCode") ?? ""}
-              onValueChange={(value) =>
-                form.setValue("nationalityCode", value, {
-                  shouldDirty: true,
-                  shouldValidate: true,
-                })
-              }
-            />
-            <FieldDescription>
-              Quốc tịch không quyết định quốc gia tìm kiếm.
-            </FieldDescription>
-          </Field>
+          <XTextInput
+            id="fullName"
+            label="Họ và tên" // Hiển thị to ở giữa khi trống
+            floatingLabel="Họ và tên:" // Hiển thị thu nhỏ ngắn gọn ở trên khi đã gõ
+            required={true}
+            maxLength={100}
+            error={form.formState.errors.fullName}
+            registration={form.register("fullName")}
+            onValueChange={(val) => {
+              form.setValue("fullName", val);
+              if (val.trim().length > 0) form.clearErrors("fullName");
+            }}
+            onClear={() => form.setValue("fullName", "", { shouldValidate: true })}
+          />
+          {/* Quốc tịch */}
+          <XCountrySelect
+            id="nationalityCode"
+            label="Quốc tịch"
+            floatingLabel="Quốc tịch:" 
+            required={true}
+            hideClearButton={true} // Thêm dòng này để ẩn nút (X)
+            error={form.formState.errors.nationalityCode}
+            // registration={form.register("countryCode")}
+            value={form.watch("nationalityCode")}
+            onValueChange={(val) => {
+              form.setValue("nationalityCode", val);
+              if (val.trim().length > 0) form.clearErrors("nationalityCode");
+            }}
+            onClear={() => form.setValue("nationalityCode", "", { shouldValidate: true })}
+          />
+          {/* Quốc gia mặc định */}
+          <XCountrySelect
+            id="defaultCountryCode"
+            label="Quốc gia mặc định"
+            note="Dùng làm lựa chọn mặc định khi tìm kiếm, đăng tin và tạo địa chỉ."
+            floatingLabel="Quốc gia mặc định:" 
+            required={true}
+            hideClearButton={true} // Thêm dòng này để ẩn nút (X)
+            error={form.formState.errors.defaultCountryCode}
+            value={form.watch("defaultCountryCode")}
+            onValueChange={(val) => {
+              form.setValue("defaultCountryCode", val);
+              if (val.trim().length > 0) form.clearErrors("defaultCountryCode");
+            }}
+            onClear={() => form.setValue("defaultCountryCode", "", { shouldValidate: true })}
+          />
 
-          <Field data-invalid={!!form.formState.errors.defaultCountryCode}>
-            <FieldLabel htmlFor="defaultCountryCode">
-              Quốc gia mặc định *
-            </FieldLabel>
-            <CountrySelect
-              name="defaultCountryCode"
-              value={form.watch("defaultCountryCode")}
-              onValueChange={(value) =>
-                form.setValue("defaultCountryCode", value, {
-                  shouldDirty: true,
-                  shouldValidate: true,
-                })
-              }
-            />
-
-            <FieldDescription>
-              Dùng làm lựa chọn mặc định khi tìm kiếm, đăng tin và tạo địa
-              chỉ.
-            </FieldDescription>
-
-            <FieldError>
-              {form.formState.errors.defaultCountryCode?.message}
-            </FieldError>
-          </Field>
+          {/* Tiền tệ mặc định */}
+          <XCurrencySelect
+            id="defaultCurrencyCode"
+            label="Tiền tệ mặc định"
+            note="Dùng làm tiền tệ mặc định khi tìm kiếm, đăng tin."
+            floatingLabel="Tiền tệ mặc định:" 
+            required={true}
+            hideClearButton={true}
+            error={form.formState.errors.defaultCurrencyCode}
+            value={form.watch("defaultCurrencyCode")}
+            onValueChange={(val) => {
+              form.setValue("defaultCurrencyCode", val);
+              if (val.trim().length > 0) form.clearErrors("defaultCurrencyCode");
+            }}
+            onClear={() => form.setValue("defaultCurrencyCode", "", { shouldValidate: true })}
+          />
         </FieldGroup>
 
         <FormActions
@@ -322,9 +329,11 @@ export function PhoneDialog({
   onOpenChange,
   initialPhone,
   onSave,
+  saving,
 }: DialogBase & {
   initialPhone: DemoPhone | null;
   onSave: (values: PhoneFormValues) => void;
+  saving?: boolean;
 }) {
   const form = useForm<PhoneFormValues>({
     resolver: zodResolver(phoneSchema),
@@ -391,38 +400,50 @@ export function PhoneDialog({
           </Field>
         </FieldGroup>
 
-        <FormActions onCancel={() => onOpenChange(false)} />
+        <FormActions onCancel={() => onOpenChange(false)} saving = {saving}/>
       </form>
     </ProfileFormDialog>
   );
 }
 
+
 export function AddressDialog({
   open,
   onOpenChange,
   initialAddress,
-  defaultCountryCode,
+  defaultCountryCode = "VN",
   onSave,
+  saving,
 }: DialogBase & {
-  initialAddress: DemoAddress | null;
+  initialAddress: SellerAddress | null;
   defaultCountryCode: string;
-  onSave: (values: AddressFormValues) => void;
+  onSave: (values: SellerAddressInput) => void;
+  saving?: boolean;
 }) {
-  const form = useForm<AddressFormValues>({
-    resolver: zodResolver(addressSchema),
+  const form = useForm<SellerAddressInput>({
+    resolver: zodResolver(SellerAddressValidate),
     defaultValues: {
       label: "Nhà riêng",
       recipientName: "",
       phone: "",
       countryCode: defaultCountryCode,
-      addressLine1: "",
-      addressLine2: "",
-      locality: "",
-      administrativeArea: "",
+      regionId: null,
+      countyId: null,
+      wardId: null,
+      location: "",
       postalCode: "",
       primary: false,
     },
   });
+// Lấy giá trị hiện tại của address từ form watch
+  const watchValues = form.watch();
+  const addressValue: AddressValue = {
+    countryCode: watchValues.countryCode,
+    regionId: watchValues.regionId ?? null,
+    countyId: watchValues.countyId ?? null,
+    wardId: watchValues.wardId ?? null,
+    location: watchValues.location ?? "",
+  };
 
   useEffect(() => {
     if (open) {
@@ -430,104 +451,142 @@ export function AddressDialog({
         label: initialAddress?.label ?? "Nhà riêng",
         recipientName: initialAddress?.recipientName ?? "",
         phone: initialAddress?.phone ?? "",
-        countryCode: initialAddress?.countryCode ?? defaultCountryCode,
-        addressLine1: initialAddress?.addressLine1 ?? "",
-        addressLine2: initialAddress?.addressLine2 ?? "",
-        locality: initialAddress?.locality ?? "",
-        administrativeArea: initialAddress?.administrativeArea ?? "",
+        countryCode:
+          initialAddress?.countryCode ?? defaultCountryCode,
+        regionId: initialAddress?.regionId ?? null,
+        countyId: initialAddress?.countyId ?? null,
+        location: initialAddress?.location ?? "",
         postalCode: initialAddress?.postalCode ?? "",
         primary: initialAddress?.primary ?? false,
       });
     }
   }, [open, initialAddress, defaultCountryCode, form]);
-
+  // const saving = form.formState.isSubmitting;
   return (
     <ProfileFormDialog
       open={open}
       onOpenChange={onOpenChange}
       title={initialAddress ? "Sửa địa chỉ" : "Thêm địa chỉ"}
-      description="Địa chỉ được lưu theo quốc gia đã chọn. Các trường hành chính sẽ được tinh chỉnh theo từng quốc gia."
+      // description="Địa chỉ được lưu theo quốc gia đã chọn. Các trường hành chính sẽ được tinh chỉnh theo từng quốc gia."
     >
-      <form onSubmit={form.handleSubmit(onSave)} className="space-y-5">
-        <FieldGroup>
-          <Field data-invalid={!!form.formState.errors.countryCode}>
-            <FieldLabel htmlFor="addressCountry">Quốc gia *</FieldLabel>
-            <CountrySelect
-              name="countryCode"
-              value={form.watch("countryCode")}
-              onValueChange={(value) =>
-                form.setValue("countryCode", value, {
-                  shouldDirty: true,
-                  shouldValidate: true,
-                })
-              }
-            />
-            <FieldError>
-              {form.formState.errors.countryCode?.message}
-            </FieldError>
-          </Field>
+      <form
+        onSubmit={form.handleSubmit(onSave)}
+        className="space-y-5"
+      >
+        <FieldGroup className="gap-3">
+          <XTextInput
+            id="addressLabel"
+            label="Tên gợi nhớ" // Hiển thị to ở giữa khi trống
+            floatingLabel="Tên gợi nhớ:" // Hiển thị thu nhỏ ngắn gọn ở trên khi đã gõ
+            required={false}
+            maxLength={100}
+            error={form.formState.errors.label}
+            registration={form.register("label")}
+            onValueChange={(val) => {
+              form.setValue("label", val);
+              if (val.trim().length > 0) form.clearErrors("label");
+            }}
+            onClear={() => form.setValue("label", "", { shouldValidate: true })}
+          />
 
-          <Field data-invalid={!!form.formState.errors.label}>
-            <FieldLabel htmlFor="addressLabel">Tên địa chỉ *</FieldLabel>
-            <Input id="addressLabel" {...form.register("label")} />
-            <FieldError>{form.formState.errors.label?.message}</FieldError>
-          </Field>
+          <XTextInput
+            id="recipientName"
+            label="Tên người nhận"
+            floatingLabel="Người nhận:" 
+            required={false}
+            maxLength={200}
+            error={form.formState.errors.recipientName}
+            registration={form.register("recipientName")}
+            onValueChange={(val) => {
+              form.setValue("recipientName", val);
+              if (val.trim().length > 0) form.clearErrors("recipientName");
+            }}
+            onClear={() => form.setValue("recipientName", "", { shouldValidate: true })}
+          />
 
-          <Field data-invalid={!!form.formState.errors.recipientName}>
-            <FieldLabel htmlFor="recipientName">Người nhận *</FieldLabel>
-            <Input id="recipientName" {...form.register("recipientName")} />
-            <FieldError>
-              {form.formState.errors.recipientName?.message}
-            </FieldError>
-          </Field>
+          <XPhoneInput
+            id="addressPhone"
+            label="Điện thoại liên hệ"
+            floatingLabel="Điện thoại liên hệ:" 
+            required={false}
+            maxLength={50}
+            error={form.formState.errors.phone}
+            registration={form.register("phone")}
+            onValueChange={(val) => {
+              form.setValue("phone", val);
+              if (val.trim().length > 0) form.clearErrors("phone");
+            }}
+            onClear={() => form.setValue("phone", "", { shouldValidate: true })}
+          />
 
-          <Field>
-            <FieldLabel htmlFor="addressPhone">Điện thoại liên hệ</FieldLabel>
-            <Input id="addressPhone" type="tel" {...form.register("phone")} />
-          </Field>
+          <XCountrySelect
+            id="countryCode"
+            label="Quốc gia"
+            floatingLabel="Quốc gia:" 
+            required={true}
+            hideClearButton={true} // Thêm dòng này để ẩn nút (X)
+            error={form.formState.errors.countryCode}
+            // registration={form.register("countryCode")}
+            value={form.watch("countryCode")}
+            onValueChange={(val) => {
+              form.setValue("countryCode", val);
+              form.setValue("regionId", null);
+              form.setValue("countyId", null);
+              if (val.trim().length > 0) form.clearErrors("countryCode");
+            }}
+            onClear={() => form.setValue("countryCode", "", { shouldValidate: true })}
+          />
 
-          <Field data-invalid={!!form.formState.errors.addressLine1}>
-            <FieldLabel htmlFor="addressLine1">Địa chỉ dòng 1 *</FieldLabel>
+          {/* Tích hợp AddressInputTrigger */}
+          <XAddressInput
+            label="Địa chỉ"
+            floatingLabel="Địa chỉ:"
+            formValues={addressValue}
+            onValueChange={(newValues) => {
+              // Khi người dùng bấm [XONG] ở Modal, cập nhật lại toàn bộ giá trị vào form
+              form.setValue("regionId", newValues.regionId, { shouldValidate: true });
+              form.setValue("countyId", newValues.countyId, { shouldValidate: true });
+              form.setValue("wardId", newValues.wardId, { shouldValidate: true });
+              form.setValue("location", newValues.location, { shouldValidate: true });
+            }}
+            error={form.formState.errors.location}
+            hideClearButton
+            // useRegions={useRegions}
+            // useCounties={useCounties}
+            // useWards={useWards}
+            // Dùng arrow function để truyền đủ 2 tham số: countryCode và id
+            // getRegionName={(id) => useRegionNameById(addressValue.countryCode, id)}
+            // getCountyName={(id) => useCountyNameById(addressValue.regionId, id)}
+            // getWardName={(id) => useWardNameById(addressValue.countyId, id)}
+          />
+
+          {/* <Field data-invalid={!!form.formState.errors.postalCode}>
+            <FieldLabel htmlFor="postalCode">
+              Mã bưu chính
+            </FieldLabel>
             <Input
-              id="addressLine1"
-              {...form.register("addressLine1")}
-              placeholder="Số nhà, tên đường..."
+              id="postalCode"
+              {...form.register("postalCode")}
             />
             <FieldError>
-              {form.formState.errors.addressLine1?.message}
+              {form.formState.errors.postalCode?.message}
             </FieldError>
-          </Field>
+          </Field> */}
 
-          <Field>
-            <FieldLabel htmlFor="addressLine2">Địa chỉ dòng 2</FieldLabel>
-            <Input
-              id="addressLine2"
-              {...form.register("addressLine2")}
-              placeholder="Căn hộ, tầng, tòa nhà..."
-            />
-          </Field>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Field>
-              <FieldLabel htmlFor="locality">Thành phố / địa phương</FieldLabel>
-              <Input id="locality" {...form.register("locality")} />
-            </Field>
-
-            <Field>
-              <FieldLabel htmlFor="administrativeArea">
-                Tỉnh / bang / khu vực
-              </FieldLabel>
-              <Input
-                id="administrativeArea"
-                {...form.register("administrativeArea")}
-              />
-            </Field>
-          </div>
-
-          <Field>
-            <FieldLabel htmlFor="postalCode">Mã bưu chính</FieldLabel>
-            <Input id="postalCode" {...form.register("postalCode")} />
-          </Field>
+          <XTextInput
+            id="postalCode"
+            label="Mã bưu chính"
+            floatingLabel="Mã bưu chính:" 
+            required={false}
+            maxLength={20}
+            error={form.formState.errors.postalCode}
+            registration={form.register("postalCode")}
+            onValueChange={(val) => {
+              form.setValue("postalCode", val);
+              if (val.trim().length > 0) form.clearErrors("postalCode");
+            }}
+            onClear={() => form.setValue("postalCode", "", { shouldValidate: true })}
+          />
 
           <Field orientation="horizontal">
             <Checkbox
@@ -536,6 +595,7 @@ export function AddressDialog({
               onCheckedChange={(checked) =>
                 form.setValue("primary", checked === true, {
                   shouldDirty: true,
+                  shouldValidate: true,
                 })
               }
             />
@@ -550,7 +610,8 @@ export function AddressDialog({
           </Field>
         </FieldGroup>
 
-        <FormActions onCancel={() => onOpenChange(false)} />
+        <FormActions onCancel={() => onOpenChange(false)}
+        saving = {saving}/>
       </form>
     </ProfileFormDialog>
   );

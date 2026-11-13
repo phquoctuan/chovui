@@ -3,6 +3,7 @@ import {
   varchar,
   boolean,
   smallint,
+  text
 } from "drizzle-orm/pg-core";
 
 export const currencies = pgTable("currencies", {
@@ -12,5 +13,9 @@ export const currencies = pgTable("currencies", {
   decimalPlaces: smallint("decimal_places")
     .notNull()
     .default(2),
+  iconUrl: text("icon_url"),
   isActive: boolean("is_active").notNull().default(true),
 });
+
+export type Currency = typeof currencies.$inferSelect;
+export type NewCurrency = typeof currencies.$inferInsert;

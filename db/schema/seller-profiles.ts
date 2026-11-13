@@ -25,6 +25,10 @@ export const sellerProfiles = pgTable("seller_profiles", {
     .notNull()
     .default("VN"),
 
+    // Tiền tệ mặc định khi đăng tin và tìm kiếm.
+  defaultCurrencyCode: text("default_currency_code")
+    .notNull()
+    .default("PI"),
   /**
    * Server-controlled readiness flag.
    *

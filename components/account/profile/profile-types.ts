@@ -7,19 +7,19 @@ export type DemoPhone = {
   primary: boolean;
 };
 
-export type DemoAddress = {
-  id: string;
-  label: string;
-  recipientName: string;
-  phone: string;
-  countryCode: string;
-  addressLine1: string;
-  addressLine2: string;
-  locality: string;
-  administrativeArea: string;
-  postalCode: string;
-  primary: boolean;
-};
+// export type DemoAddress = {
+//   id: string;
+//   label: string;
+//   recipientName: string;
+//   phone: string;
+//   countryCode: string;
+//   addressLine1: string;
+//   addressLine2: string;
+//   locality: string;
+//   administrativeArea: string;
+//   postalCode: string;
+//   primary: boolean;
+// };
 
 export type DemoContactMethod = {
   id: string;
@@ -29,7 +29,7 @@ export type DemoContactMethod = {
   primary: boolean;
 };
 
-export type CountryOption = {
-  code: string;
-  name: string;
-};
+// export type CountryOption = {
+//   code: string;
+//   name: string;
+// };
