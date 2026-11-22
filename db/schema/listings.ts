@@ -79,7 +79,7 @@ export const baseListingColumns = {
   categoryId: integer("category_id")
     .notNull()
     .references(() => categories.id, { onDelete: "restrict" }),
-  
+  groupId: integer("group_id"),
   condition: conditionEnum("condition"),
   quantity: integer("quantity").notNull().default(1),
 

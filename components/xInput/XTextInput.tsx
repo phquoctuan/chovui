@@ -103,7 +103,7 @@ export const XTextInput: React.FC<XTextInputProps> = ({
         data-invalid={!!error}
         className={`relative flex items-center rounded-lg border px-3 pt-4.5 pb-1.5 transition-all duration-300 ease-in-out bg-white
           data-[invalid=true]:border-red-500 border-gray-300 focus-within:border-black data-[invalid=true]:focus-within:border-red-500
-          ${disabled ? "bg-gray-100 cursor-not-allowed" : ""}
+          ${disabled ? "bg-gray-100 cursor-not-allowed" : "hover:border-black"}
           ${className}`}
       >
         {/* 1. Label thu nhỏ bên trên (Sử dụng transition mượt mà về vị trí và độ trong suốt) */}

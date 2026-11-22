@@ -61,50 +61,6 @@ export type ListingUpdateInput = z.infer<typeof updateListingBodySchema>;
 
 
 //==========================================reserve===============//////////////////////////=========
-// 2. Schema attributes riêng cho từng nhóm danh mục chính
-const realEstateAttributesSchema = z.object({
-  area: z.coerce.number().positive("Diện tích phải lớn hơn 0"),
-  bedrooms: z.coerce.number().int().nonnegative().optional(),
-  toilets: z.coerce.number().int().nonnegative().optional(),
-  legal: z.string().optional(), // Sổ hồng, sổ đỏ...
-});
-
-const vehicleAttributesSchema = z.object({
-  brand: z.string({ message: "Vui lòng chọn hãng xe" }).min(1, "Vui lòng chọn hãng xe"),
-  year: z.coerce.number().int().min(1900).max(2026),
-  km: z.coerce.number().nonnegative("Số km không được âm"),
-});
-
-// 2. Mapping giữa template/root category với schema tương ứng
-const attributeSchemaMap: Record<string, z.ZodObject<any>> = {
-  "real-estate": realEstateAttributesSchema,
-  "vehicles": vehicleAttributesSchema,
-  // Thêm các category/template khác vào đây...
-};
-
-// 3. Schema attributes mặc định khi không có template hoặc template không khớp (Object rỗng, không nhận field linh tinh)
-//như z.record(z.string(), z.any())
-const defaultAttributesSchema = z.object({});
-
-// 4. Hàm Factory trả về Schema hoàn chỉnh dựa vào template được gửi lên
-export function getCreateListingSchema(template: string | null | undefined) {
-  // Nếu không truyền template, trả về schema với attributes rỗng
-  if (!template) {
-    return baseListingSchema.extend({
-      attributes: defaultAttributesSchema,
-    });
-  }
-
-  // Lấy ra danh mục gốc (ví dụ: 'real-estate/buy-sell' -> 'real-estate')
-  const rootTemplate = template.split("/")[0] || template;
-
-  // Lấy schema tương ứng, nếu không tìm thấy thì fallback về object rỗng z.object({})
-  const specificAttributesSchema = attributeSchemaMap[rootTemplate] || defaultAttributesSchema;
-
-  return baseListingSchema.extend({
-    attributes: specificAttributesSchema,
-  });
-}
 
 //////////////////usage/////////////////
 // // Bước 1: Lấy schema động chính xác cho category đó

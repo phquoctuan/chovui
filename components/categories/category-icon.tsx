@@ -21,7 +21,7 @@ export function getCategoryIcon(template: string){
       return <Dog className={className} />;
     case "food":
       return <Utensils className={className} />;
-    case "appliances":
+    case "major-appliances":
       return <AirVent className={className} />;
     case "home-garden":
       return <HousePlug className={className} />;

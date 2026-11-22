@@ -176,6 +176,13 @@
       "when": 1793957780640,
       "tag": "0024_clammy_cardiac",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1794990269686,
+      "tag": "0025_add_categoryGroup",
+      "breakpoints": true
     }
   ]
 }

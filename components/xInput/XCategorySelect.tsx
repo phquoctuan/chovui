@@ -163,7 +163,8 @@ export const XCategorySelect: React.FC<XCategorySelectProps> = ({
           className={cn(
             `relative flex items-center w-full rounded-lg border px-3 pt-5 pb-2 transition-all duration-300 ease-in-out bg-white cursor-pointer select-none text-left
             data-[invalid=true]:border-red-500 border-gray-300 focus-within:border-black data-[invalid=true]:focus-within:border-red-500
-            focus:outline-none focus-visible:ring-0`,
+            focus:outline-none focus-visible:ring-0 shadow-sm`,
+            !disabled && "hover:border-black",
             disabled && "bg-gray-100 cursor-not-allowed opacity-75",
             className
           )}

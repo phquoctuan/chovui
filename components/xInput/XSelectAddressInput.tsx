@@ -146,8 +146,9 @@ export const XSelectAddressInput: React.FC<XSelectAddressInputProps> = ({
             data-invalid={!!error}
             className={cn(
               `relative flex items-center w-full rounded-lg border px-3 pt-5 pb-2 transition-all duration-300 ease-in-out bg-white cursor-pointer select-none text-left
-              border-gray-300 hover:border-black shadow-sm`,
+              border-gray-300`,
               error && "border-red-500 hover:border-red-500 focus-within:border-red-500",
+              !disabled && "hover:border-black",
               disabled && "bg-gray-100 cursor-not-allowed opacity-75",
               className
             )}

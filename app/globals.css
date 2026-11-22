@@ -147,3 +147,13 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #cbd5e1;
 }
+
+/* Ghi đè màu nền và màu chữ khi trình duyệt autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important; /* Thay 'white' bằng màu nền mong muốn của bạn (ví dụ: transparent hoặc màu nền input) */
+  -webkit-text-fill-color: inherit !important;          /* Giữ nguyên màu chữ hiện tại */
+  transition: background-color 5000s ease-in-out 0s;     /* Ngăn trình duyệt đổi màu nền */
+}

@@ -1,11 +1,11 @@
-import {type CategoryTemplateConfig} from "../listing-templates-schema";
+import {type CategoryTemplateConfig} from "./template-map";
 
 export const realEstateAttributesSchema : CategoryTemplateConfig = {
-    title: "Thông tin Bất động sản",
+    title: "Thông tin bất động sản",
     fields: [
         {
         name: "area",
-        label: "Diện tích",
+        label: "Diện tích (m²)",
         type: "number",
         required: true,
         unit: "m²",

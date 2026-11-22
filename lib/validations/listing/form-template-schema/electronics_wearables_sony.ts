@@ -1,0 +1,116 @@
+import { type CategoryTemplateConfig } from "./template-map";
+
+export const electronicsWearableSonyAttributesSchema: CategoryTemplateConfig = {
+  title: "Thông tin chi tiết",
+  fields: [
+    {
+      name: "condition",
+      label: "Tình trạng",
+      type: "select",
+      required: true,
+      options: [
+        { label: "Mới", value: "new" },
+        { label: "Đã sử dụng(chưa sửa chữa)", value: "used" },
+        { label: "Đã sử dụng(qua sửa chữa)", value: "refurbished" },
+      ],
+    },
+    {
+      name: "wearable_classify",
+      label: "Thiết bị",
+      required: true,
+      type: "select",
+      options: [
+        { label: "Đồng hồ thông minh", value: "smartwatch" },
+        { label: "Vòng tay thông minh", value: "smart_band" },
+        { label: "Khác", value: "other" },
+      ],
+    },
+    {
+      name: "wearable_company",
+      label: "Hãng",
+      type: "selectLookup",
+      required: false,
+      watchTemplate: true, // 👈 Đánh dấu field này là "công tắc" đổi schema
+      allowCustomInput: true,
+      options: [
+        { label: "Amazfit", value: "amazfit" },
+        { label: "Apple", value: "apple" },
+        { label: "Fitbit", value: "fitbit" },
+        { label: "Garmin", value: "garmin" },
+        { label: "Google", value: "google" },
+        { label: "Honor", value: "honor" },
+        { label: "Huawei", value: "huawei" },
+        { label: "Misfit", value: "misfit" },
+        { label: "OnePlus", value: "oneplus" },
+        { label: "Oppo", value: "oppo" },
+        { label: "Realme", value: "realme" },
+        { label: "Samsung", value: "samsung" },
+        { label: "Sony", value: "sony" },
+        { label: "Vivo", value: "vivo" },
+        { label: "Xiaomi", value: "xiaomi" },
+        { label: "ZTE", value: "zte" },
+        { label: "Khác", value: "other" },
+      ],
+    },
+    {
+      name: "sony_series",
+      label: "Dòng",
+      type: "selectLookup",
+      required: false,
+      allowCustomInput: true,
+      options: [
+        // Đồng hồ thông minh (SmartWatch)
+        { label: "SmartWatch 3 (SWR50)", value: "smartwatch_3" },
+        { label: "SmartWatch 2 (SW2)", value: "smartwatch_2" },
+        { label: "SmartWatch (MN2)", value: "smartwatch_mn2" },
+        { label: "LiveView (MN800)", value: "liveview" },
+        // Dây đeo thông minh (Wena Wrist)
+        { label: "Wena 3", value: "wena_3" },
+        { label: "Wena Wrist Pro", value: "wena_wrist_pro" },
+        { label: "Wena Wrist Active", value: "wena_wrist_active" },
+        { label: "Wena Wrist", value: "wena_wrist" },
+        // Vòng đeo tay thông minh (SmartBand)
+        { label: "SmartBand 2 (SWR12)", value: "smartband_2" },
+        { label: "SmartBand Talk (SWR30)", value: "smartband_talk" },
+        { label: "SmartBand (SWR10)", value: "smartband_10" },
+        // Khác
+        { label: "Dòng khác", value: "other" },
+      ],
+    },
+    {
+      name: "origin",
+      label: "Xuất xứ",
+      type: "selectLookup",
+      required: false,
+      allowCustomInput: true,
+      options: [
+        { label: "Việt Nam", value: "vn" },
+        { label: "Ấn Độ", value: "in" },
+        { label: "Hàn Quốc", value: "kr" },
+        { label: "Thái Lan", value: "th" },
+        { label: "Nhật Bản", value: "jp" },
+        { label: "Trung Quốc", value: "cn" },
+        { label: "Mỹ", value: "us" },
+        { label: "Đức", value: "de" },
+        { label: "Đài Loan", value: "tw" },
+        { label: "Nước khác", value: "other" },
+      ],
+    },
+    {
+      name: "warranty_policy",
+      label: "Chính sách bảo hành",
+      type: "select",
+      required: false,
+      options: [
+        { label: "Hết bảo hành", value: "expired" },
+        { label: "1 tháng", value: "1_month" },
+        { label: "2 tháng", value: "2_months" },
+        { label: "3 tháng", value: "3_months" },
+        { label: "4-6 tháng", value: "4_to_6_months" },
+        { label: "7-12 tháng", value: "7_to_12_months" },
+        { label: ">12 tháng", value: "gt_12_months" },
+        { label: "Còn bảo hành", value: "active" },
+      ],
+    },
+  ],
+};

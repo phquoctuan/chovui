@@ -7,6 +7,7 @@ export const categories = pgTable(
     // Dùng serial cho id (tự động tăng từ 1, 2, 3...)
     // id: serial("id").primaryKey(),
     id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+    groupId: integer("group_id"),//1: RealEstate, 2: Job, 3: Vehicles, 4: Electronics, 0: Other
     // Tên hiển thị (Ví dụ: "Bất động sản", "Mua & Bán")
     name: varchar("name", { length: 150 }).notNull(),
 

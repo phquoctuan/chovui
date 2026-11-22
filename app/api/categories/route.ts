@@ -10,11 +10,29 @@ export async function GET(request: NextRequest) {
     //Request: const { searchParams } = new URL(request.url);
     const searchParams = request.nextUrl.searchParams;
     const locale = searchParams.get("locale") || "en";
+    const groupIdsParam = searchParams.get("groupIds");
     const q = searchParams.get("q") ?? undefined;
+    // Chuyển chuỗi "1,3,5" thành [1, 3, 5]
+    let groupIds: number[] = [];
+    if (groupIdsParam) {
+      groupIds = groupIdsParam.split(",").map(Number);
+      // Validate dữ liệu đầu vào
+      if (
+        groupIds.some(
+          (id) => !Number.isInteger(id) || id < 0
+        )
+      ) {
+        return NextResponse.json(
+          { message: "groupIds không hợp lệ" },
+          { status: 400 }
+        );
+      }
+    }
 
     // Gọi repository lấy cây danh mục
     const categoryTree = await listCategories({
       locale,
+      groupIds,
       activeOnly: true,
     });
 

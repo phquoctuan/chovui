@@ -172,7 +172,7 @@ export function Header() {
                   </Link>
 
                   <Link
-                    href="/listings/create"
+                    href="/new-ads"
                     className="flex items-center gap-1 bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-md text-xs font-bold shadow-sm transition-colors"
                   >
                     <PlusCircle className="w-4 h-4" />
@@ -237,7 +237,7 @@ export function Header() {
                     </Link>
 
                     <Link
-                      href="/listings"
+                      href="/my-ads"
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 hover:bg-white rounded-md text-xs font-semibold text-slate-800 transition-colors"
                     >
                       <FileText className="w-4 h-4 text-slate-700" />
@@ -245,7 +245,7 @@ export function Header() {
                     </Link>
 
                     <Link
-                      href="/listings/create"
+                      href="/new-ads"
                       className="flex items-center gap-1.5 bg-orange-600 hover:bg-orange-700 text-white px-3.5 py-1.5 rounded-md text-xs font-bold shadow-sm transition-colors"
                     >
                       <PlusCircle className="w-4 h-4" />

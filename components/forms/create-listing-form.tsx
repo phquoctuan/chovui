@@ -22,26 +22,72 @@ import {
 } from "@/lib/api/listings";
 
 import { type ListingCreateInput } from "@/lib/validations/listing/listing-base-schema";
-import { getCreateListingSchema} from "@/lib/validations/listing/listing-templates-schema";
+import { getCreateListingSchema } from "@/lib/validations/listing/listing-templates-schema";
 import type { PendingListingImage } from "@/lib/types/pending-listing-image";
 import { ListingImageUploadCreate } from "@/components/listings/image_manage/listing-image-upload-create";
 import { LISTING_IMAGE_RESIZE } from "@/const";
 import { resizeImage } from "@/lib/image/resize-image";
-
 import { XTextInput } from "../xInput/XTextInput";
 import { XTextareaInput } from "../xInput/XTextareaInput";
-// import { XCountrySelect } from "@/components/xInput/XCountrySelect";
-// import { XAddressInput } from "@/components/xInput/XAddressInput";
 import { XCategorySelect } from "@/components/xInput/XCategorySelect";
 import { XPriceInput } from "@/components/xInput/XPriceInput";
 import { XSelectAddressInput } from "@/components/xInput/XSelectAddressInput";
 import { SellerAddress } from "@/db/schema/index.js";
 import { ListingAttributesRenderer } from "@/components/listings/listing-attributes-renderer";
+import { findWatchTemplateFieldName } from "@/lib/validations/listing/form-template-schema/template-map";
+import { getAttributeCustomSchema } from "@/lib/validations/listing/form-custom-schema/custom-template-map";
+import { CATEGORY_TEMPLATES } from "@/lib/validations/listing/form-template-schema/template-map";
 
 type CreateListingFormProps = {
   initialData?: Partial<ListingCreateInput>;
   initialListingId?: string | null;
 };
+export function createDynamicListingResolver(baseTemplate: string | null) {
+  return async (values: any, context: any, options: any) => {
+    // 1. Tự động tìm xem trong template hiện tại có field nào được đánh dấu watchTemplate không
+    const watchFieldName = findWatchTemplateFieldName(baseTemplate);
+    // 2. Nếu tìm thấy field đó, lấy giá trị mà người dùng đang chọn trong form `attributes`
+    // (Vì các field attributes thường được lưu trong object attributes, vd: values.attributes[watchFieldName])
+    let selectedSubTemplate = baseTemplate;
+    if (watchFieldName && values?.attributes && values.attributes[watchFieldName]) {
+      const subValue = values.attributes[watchFieldName];
+      // Ghép nối template gốc với giá trị mới chọn (tuỳ theo quy ước đặt tên template của bạn)
+      selectedSubTemplate = `${baseTemplate}_${subValue}`;
+    }
+
+    //Tìm trong custome schema xem có hay không
+    const customSchema = getAttributeCustomSchema(selectedSubTemplate);
+    if (customSchema) {
+      zodResolver(customSchema)(values, context, options);
+    }
+
+    // 3. Sinh schema động dựa trên template mới nhất đã được kích hoạt
+    const dynamicSchema = getCreateListingSchema(selectedSubTemplate);
+    // 4. Trả về kết quả validate
+    return zodResolver(dynamicSchema)(values, context, options);
+  };
+}
+
+export function getDefaultAttributesValues(templateName: string | null | undefined) {
+  if (!templateName) return {};
+  //default value chỉ set bên template-schema, custom shcema không có
+  const template = templateName;
+  const config = (CATEGORY_TEMPLATES[template] || CATEGORY_TEMPLATES.default) as any;
+
+  // Lấy danh sách fields (hỗ trợ cả fields[] lẫn sections[])
+  const fields = config.fields || config.sections?.flatMap((s: any) => s.fields) || [];
+
+  const defaultValues: Record<string, any> = {};
+
+  fields.forEach((field: any) => {
+    // Chỉ set vào defaultValues nếu field có khai báo defaultValue và khác undefined/null
+    if (field.defaultValue !== undefined && field.defaultValue !== null) {
+      defaultValues[field.name] = field.defaultValue;
+    }
+  });
+
+  return defaultValues;
+}
 
 export function CreateListingForm({ initialData, initialListingId = null }: CreateListingFormProps) {
   const [listingId, setListingId] = useState<string | null>(initialListingId);
@@ -60,10 +106,14 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
   const currentLocale = useLocale();
 
   // Lấy schema động dựa theo template
-  const schema = getCreateListingSchema(currentTemplate);
-
+  // const schema = getCreateListingSchema(currentTemplate);//ưu tiên tìm trong Custom Schema
+  // Tự động bóc tách các defaultValue từ config của template ban đầu
+  const initialDefaultAttributes = getDefaultAttributesValues(currentTemplate);
+  // console.log("currentTemplate: ", currentTemplate);
+  // console.log("initialDefaultAttributes: ", initialDefaultAttributes);
   const form = useForm<ListingCreateInput>({
-    resolver: zodResolver(schema as any),
+    // resolver: zodResolver(schema as any),
+    resolver: createDynamicListingResolver(currentTemplate) as any, // Sử dụng resolver tự động phát hiện
     defaultValues: {
       title: "",
       description: "",
@@ -73,7 +123,10 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
       countryCode: profile?.defaultCountryCode,
       quantity: 1,
       currencyCode: profile?.defaultCurrencyCode,
-      attributes: {},
+      // attributes: {},
+      attributes: {
+        ...initialDefaultAttributes, // 👈 Đưa các giá trị mặc định vào đây
+      },
       slug: "",
       ...(initialData || {}),
     },
@@ -335,8 +388,8 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
               {/* ================= PRICE & PRICE TYPE ================= */}
               <XPriceInput
                 id="price"
-                label="Nhập giá bán"
-                floatingLabel="Giá bán:"
+                label="Nhập giá bán-cho thuê"
+                floatingLabel="Giá bán-cho thuê:"
                 currencySymbol={currencySymbol}
                 currencyIconUrl={currencyIconUrl}
                 decimalSeparator={decimalSeparator}
@@ -355,8 +408,8 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
 
               {/* ================= LOCATION & ADDRESS ================= */}
               <XSelectAddressInput
-                label="Chọn địa chỉ"
-                floatingLabel="Địa chỉ:"
+                label="Chọn địa chỉ liên hệ"
+                floatingLabel="Địa chỉ liên hệ:"
                 required
                 addresses={sellerAddresses}
                 defaultCountryCode={defaultCountryCode}
@@ -392,8 +445,16 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
                 onValueChange={(val) => {
                   const numericVal = val ? Number(val.id) : undefined;
                   setCurrentTemplate(val.template);
-                  //Xóa sạch attributes cũ khi đổi danh mục
-                  form.setValue("attributes", {}, { shouldValidate: false });
+                  //Lấy các giá trị mặc định của template mới chọn
+                  const newDefaultAttributes = getDefaultAttributesValues(val.template);
+                  //Nạp giá trị mặc định mới vào form attributes thay vì để trống {}
+                  form.setValue(
+                    "attributes",
+                    {
+                      ...newDefaultAttributes,
+                    },
+                    { shouldValidate: false },
+                  );
                   form.setValue("categoryId", numericVal as any, { shouldValidate: true });
                 }}
                 onClear={() => {
@@ -414,9 +475,8 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
                 <span className="flex items-center gap-2">
                   <List className="h-4 w-4 text-slate-800"></List>Thông tin chi tiết
                 </span>
-              ) : (
-                null// <span>Thông tin chi tiết theo danh mục</span>
-              )}
+              ) : null // <span>Thông tin chi tiết theo danh mục</span>
+              }
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -427,10 +487,7 @@ export function CreateListingForm({ initialData, initialListingId = null }: Crea
             ) : (
               <FieldGroup className="gap-2">
                 {/* Render thông tin chi tiết động dựa trên template */}
-                <ListingAttributesRenderer 
-                  templateName={currentTemplate} 
-                  form={form} 
-                />
+                <ListingAttributesRenderer templateName={currentTemplate} form={form} />
               </FieldGroup>
             )}
           </CardContent>

@@ -1,0 +1,97 @@
+import { type CategoryTemplateConfig } from "./template-map";
+
+export const electronicsTvsAudioKaraokeAttributesSchema: CategoryTemplateConfig = {
+  title: "Thông tin chi tiết Amp",
+  fields: [
+    {
+      name: "condition",
+      label: "Tình trạng",
+      type: "select",
+      required: true,
+      options: [
+        { label: "Mới", value: "new" },
+        { label: "Đã sử dụng(chưa sửa chữa)", value: "used" },
+        { label: "Đã sử dụng(qua sửa chữa)", value: "refurbished" },
+      ],
+    },
+    {
+      name: "tvsaudio_classify",
+      label: "Thiết bị",
+      required: true,
+      type: "select",
+      watchTemplate: true, // 👈 Đánh dấu field này là "công tắc" đổi schema
+      options: [
+        { label: "Tivi", value: "tv" },
+        { label: "Loa", value: "speaker" },
+        { label: "Amply", value: "amplifier" },
+        { label: "Tai nghe", value: "headphone" },
+        { label: "Micro", value: "microphone" },
+        { label: "Karaoke", value: "karaoke" },
+        { label: "Khác", value: "other" },
+      ],
+    },
+    {
+      name: "karaoke_company",
+      label: "Hãng",
+      type: "selectLookup",
+      required: false,
+      options: [
+        { label: "Yamaha", value: "yamaha" },
+        { label: "Ariang", value: "ariang" },
+        { label: "Maingo", value: "maingo" },
+        { label: "Bose", value: "bose" },
+        { label: "Boston", value: "boston" },
+        { label: "Jarguar", value: "jarguar" },
+        { label: "Khác", value: "other" },
+      ],
+    },
+    {
+      name: "karaoke_power",
+      label: "Công suất",
+      type: "select",
+      required: false,
+      options: [
+        { label: "Dưới 500W", value: "lt_500w" },
+        { label: "501 - 900W", value: "501_to_900w" },
+        { label: "901 - 1200W", value: "901_to_1200w" },
+        { label: "1201 - 1500W", value: "1201_to_1500w" },
+        { label: "Trên 1500W", value: "gt_1500w" },
+      ],
+    },
+    {
+      name: "origin",
+      label: "Xuất xứ",
+      type: "selectLookup",
+      required: false,
+      allowCustomInput: true,
+      options: [
+        { label: "Việt Nam", value: "vn" },
+        { label: "Ấn Độ", value: "in" },
+        { label: "Hàn Quốc", value: "kr" },
+        { label: "Thái Lan", value: "th" },
+        { label: "Nhật Bản", value: "jp" },
+        { label: "Trung Quốc", value: "cn" },
+        { label: "Mỹ", value: "us" },
+        { label: "Đức", value: "de" },
+        { label: "Đài Loan", value: "tw" },
+        { label: "Nước khác", value: "other" },
+      ],
+    },
+    {
+      name: "warranty_policy",
+      label: "Chính sách bảo hành",
+      type: "select",
+      required: false,
+      options: [
+        { label: "Hết bảo hành", value: "expired" },
+        { label: "1 tháng", value: "1_month" },
+        { label: "2 tháng", value: "2_months" },
+        { label: "3 tháng", value: "3_months" },
+        { label: "4-6 tháng", value: "4_to_6_months" },
+        { label: "7-12 tháng", value: "7_to_12_months" },
+        { label: ">12 tháng", value: "gt_12_months" },
+        { label: "Còn bảo hành", value: "active" },
+      ],
+    },
+  ],
+};

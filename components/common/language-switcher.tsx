@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useLocale } from "next-intl";
+import { useSearchParams } from "next/navigation"; // 1. Import thêm useSearchParams
 import { ChevronDown } from "lucide-react";
 
 import { routing, supportedLocales } from "@/i18n/routing";
@@ -18,21 +19,25 @@ export function LanguageSwitcher() {
   const currentLocale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams(); // 2. Khởi tạo hook lấy query params
 
   const activeLocale = supportedLocales.find((item) => item.code === currentLocale) || supportedLocales[0];
 
   const handleSelectLanguage = (newLocale: (typeof routing.locales)[number]) => {
     if (newLocale === currentLocale) return;
 
-    // 1. Chủ động lưu cookie NEXT_LOCALE kéo dài 1 năm (31536000 giây)
+    // Chủ động lưu cookie NEXT_LOCALE kéo dài 1 năm
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
-    router.replace(pathname, { locale: newLocale });
+    // 3. Chuyển hướng kèm theo query params hiện tại (nếu có)
+    const searchString = searchParams.toString();
+    const fullPath = searchString ? `${pathname}?${searchString}` : pathname;
+
+    router.replace(fullPath, { locale: newLocale });
   };
 
   return (
     <DropdownMenu>
-      {/*Dùng render thay vì asChild cho Base UI */}
       <DropdownMenuTrigger
         render={(props) => (
           <Button
@@ -48,7 +53,6 @@ export function LanguageSwitcher() {
               height={12}
               className="rounded-xs object-cover"
             />
-            {/* <span className="uppercase">{activeLocale.code}</span> */}
             <ChevronDown className="h-3.5 w-3.5 opacity-60" />
           </Button>
         )}

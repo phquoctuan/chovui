@@ -174,7 +174,7 @@ export const XPriceInput: React.FC<XPriceInputProps> = ({
         data-invalid={!!error}
         className={`relative flex flex-col rounded-lg border transition-all duration-300 ease-in-out bg-white
           data-[invalid=true]:border-red-500 border-gray-300 focus-within:border-black data-[invalid=true]:focus-within:border-red-500
-          ${disabled ? "bg-gray-100 cursor-not-allowed opacity-75" : ""}`}
+          ${disabled ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-black"}`}
       >
         {/* Phần Input phía trên */}
         <div

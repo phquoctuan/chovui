@@ -102,7 +102,7 @@ export const XTextareaInput: React.FC<XTextareaInputProps> = ({
         data-invalid={!!error}
         className={`relative flex flex-col rounded-lg border px-3 pt-6 pb-2 transition-all duration-300 ease-in-out bg-white
           data-[invalid=true]:border-red-500 border-gray-300 focus-within:border-black data-[invalid=true]:focus-within:border-red-500
-          ${disabled ? "bg-gray-100 cursor-not-allowed" : ""}
+          ${disabled ? "bg-gray-100 cursor-not-allowed" : "hover:border-black"}
           ${className}`}
       >
         {/* 1. Label thu nhỏ bên trên */}

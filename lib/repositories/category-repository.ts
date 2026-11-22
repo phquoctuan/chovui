@@ -1,12 +1,14 @@
-import { eq, and, or, ilike, asc, isNull, sql } from "drizzle-orm";
+import { eq, and, or, ilike, asc, isNull, sql, inArray} from "drizzle-orm";
 import { db } from "@/db";
 // import { countries, type Country } from "@/db/schema/countries";
 import { categories, categoryTranslations, type Caterory } from "@/db/schema/categories";
+import { integer } from 'drizzle-orm/pg-core';
 
 export type CategorySearchOptions = {
   query?: string;
   activeOnly?: boolean;
   locale?: string;
+  groupIds?: number[],
 };
 
 export type CategoryTree = Awaited<ReturnType<typeof listCategories>>;
@@ -14,6 +16,7 @@ export type CategoryTree = Awaited<ReturnType<typeof listCategories>>;
 //use for useCategories(local: string)
 export async function listCategories({
   activeOnly = true,
+  groupIds = [],
   locale = "vi",
 }: CategorySearchOptions) {
   // Xây dựng điều kiện query cơ bản
@@ -21,10 +24,14 @@ export async function listCategories({
   if (activeOnly) {
     conditions.push(eq(categories.isActive, true));
   }
+  if (groupIds.length > 0) {
+    conditions.push(inArray(categories.groupId, groupIds));
+  }
   console.log("local:", locale)
   const allCategories = await db
     .select({
       id: categories.id,
+      groupId: categories.groupId,
       parentId: categories.parentId,
       slug: categories.slug,
       template: categories.template,

@@ -1,7 +1,7 @@
-import {type CategoryTemplateConfig} from "../listing-templates-schema";
+import {type CategoryTemplateConfig} from "./template-map";
 
 export const vehicleAttributesSchema : CategoryTemplateConfig = {
-    title: "Thông tin Xe cộ",
+    title: "Thông tin xe cộ",
     fields: [
       { name: "brand", label: "Hãng xe", type: "text", required: true, placeholder: "Ví dụ: Honda, Toyota..." },
       { name: "model", label: "Dòng xe", type: "text", placeholder: "Ví dụ: SH 150i, Camry..." },

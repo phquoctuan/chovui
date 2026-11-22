@@ -1,52 +1,28 @@
-// @/lib/validations/listing/listing-templates.ts
 import { z } from "zod";
 import { baseListingSchema } from "./listing-base-schema";
-import {realEstateAttributesSchema} from "./form-template-schema/real-estate";
-import {vehicleAttributesSchema} from "./form-template-schema/vehicle";
+import { CATEGORY_TEMPLATES } from "./form-template-schema/template-map";
+import { getAttributeCustomSchema } from "./form-custom-schema/custom-template-map";
 
-// Định nghĩa kiểu dữ liệu cho từng field
-export type AttributeFieldConfig = {
-  name: string;
-  label: string;
-  type: "text" | "number" | "select" | "boolean";
-  required?: boolean;
-  placeholder?: string;
-  options?: { label: string; value: string | number }[];
-  unit?: string;
-  // Các quy tắc validate bổ sung nếu muốn
-  min?: number; // Dùng chung cho số (giá trị) và chữ (độ dài)
-  max?: number;
-};
-
-export type CategoryTemplateConfig = {
-  title: string;
-  fields: AttributeFieldConfig[];
-};
-
-// 1. NƠI DUY NHẤT KHAI BÁO CÁC TRƯỜNG DỮ LIỆU ĐỘNG CHO TỪNG TEMPLATE
-export const CATEGORY_TEMPLATES: Record<string, CategoryTemplateConfig> = {
-  "real-estate": realEstateAttributesSchema,
-  "real-estate_buy-sell": realEstateAttributesSchema,
-
-  "vehicles": vehicleAttributesSchema,
-  "vehicles_cars": vehicleAttributesSchema,
-  // Template mặc định nếu không khớp
-  default: {
-    title: "Thông tin chi tiết khác",
-    fields: [],
-  },
-};
-
-// 2. HÀM TỰ ĐỘNG SINH ZOD SCHEMA TỪ CẤU HÌNH TRÊN (Không cần khai báo thủ công nữa)
-// Hàm tự động sinh Zod Schema dựa trên cấu hình chung min/max
+// 2. HÀM TỰ ĐỘNG SINH ZOD SCHEMA HOẶC LẤY CUSTOM SCHEMA
 export function getAttributesSchema(templateName: string | null | undefined) {
   if (!templateName) return z.object({});
 
-  const rootTemplate = templateName.split("/")[0] || templateName;
-  const config = CATEGORY_TEMPLATES[rootTemplate] || CATEGORY_TEMPLATES.default;
-  const shape: Record<string, z.ZodTypeAny> = {};
+  // const template = templateName.split("/")[0] || templateName;
+  const template = templateName;
 
-  config.fields.forEach((field) => {
+  const customSchema = getAttributeCustomSchema(template);
+  if (customSchema) {
+    return customSchema;
+  }
+
+  const config = CATEGORY_TEMPLATES[template] || CATEGORY_TEMPLATES.default;
+  
+  // Hỗ trợ cả schema cũ (fields[]) hoặc schema mới gom nhóm (sections[])
+  const fields = config.fields || config.sections?.flatMap((s: any) => s.fields) || [];
+
+  const shape: Record<string, z.ZodType> = {};
+
+  fields.forEach((field: any) => {
     // ==========================================
     // 1. LOGIC CHO KIỂU NUMBER
     // ==========================================
@@ -62,13 +38,11 @@ export function getAttributesSchema(templateName: string | null | undefined) {
         numValidator = numValidator.max(field.max, `${field.label} không được vượt quá ${field.max}`);
       }
 
-      const finalNumberSchema = field.required
-        ? numValidator
-        : numValidator.optional().nullable();
+      const finalNumberSchema = field.required ? numValidator : numValidator.optional().nullable();
 
       shape[field.name] = z.preprocess(
         (val) => (val === "" || val === null || val === undefined ? undefined : val),
-        finalNumberSchema
+        finalNumberSchema,
       );
     }
 
@@ -93,23 +67,23 @@ export function getAttributesSchema(templateName: string | null | undefined) {
       } else {
         shape[field.name] = z.preprocess(
           (val) => (val === "" || val === null || val === undefined ? undefined : val),
-          strValidator.optional().nullable()
+          strValidator.optional().nullable(),
         );
       }
     }
 
     // ==========================================
-    // 3. LOGIC CHO KIỂU SELECT hoặc BOOLEAN
+    // 3. LOGIC CHO KIỂU SELECT, BOOLEAN, RADIO, BUTTON-GROUP
     // ==========================================
-    else if (field.type === "select" || field.type === "boolean") {
+    else if (field.type === "select" || field.type === "boolean" || field.type === "radio" || field.type === "button-group") {
       if (!field.required) {
         shape[field.name] = z.any().optional().nullable();
       } else {
         shape[field.name] = z.preprocess(
           (val) => (val === "" || val === null || val === undefined ? undefined : val),
-          z.any().refine((val) => val !== undefined && val !== "", {
+          z.any().refine((val) => val !== undefined && val !== "" && val !== null, {
             message: `Vui lòng chọn ${field.label.toLowerCase()}`,
-          })
+          }),
         );
       }
     }
@@ -118,7 +92,7 @@ export function getAttributesSchema(templateName: string | null | undefined) {
   return z.object(shape);
 }
 
-// 3. HÀM TÍCH HỢP VÀO HÀM TẠO LISTING SCHEMA TỔNG THỂ CỦA BẠN
+// 3. HÀM TÍCH HỢP VÀO HÀM TẠO LISTING SCHEMA TỔNG THỂ
 export function getCreateListingSchema(template: string | null | undefined) {
   const specificAttributesSchema = getAttributesSchema(template);
 
